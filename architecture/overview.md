@@ -71,6 +71,7 @@ agent-on-rails/
 ├── agent-on-rails-github          # GitHub integration
 ├── agent-on-rails-agent-runtime   # execution
 ├── agent-on-rails-cli             # bootstrap / developer UX
+├── agent-on-rails-android         # mobile monitoring (KMP)
 └── agent-on-rails-infrastructure  # deploy
 ```
 

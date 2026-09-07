@@ -38,6 +38,7 @@ examples/       Dogfood / reference projects (e.g. Lakuyo)
 | `agent-on-rails-github` | GitHub App, webhooks, Checks, Issues, PRs |
 | `agent-on-rails-agent-runtime` | Sandboxed execution for coding agents |
 | `agent-on-rails-cli` | Developer and bootstrap CLI |
+| `agent-on-rails-android` | Mobile monitoring (KMP; Herry) |
 | `agent-on-rails-infrastructure` | Terraform/OpenTofu, Kubernetes, deployment |
 
 Deferred: `agent-on-rails-console`, `agent-on-rails-sdk`, `agent-on-rails-docs`.
