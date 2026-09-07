@@ -13,21 +13,21 @@ Status after M0 + marketing site. Agreed near-term surfaces with Herry: **termin
 
 ### 1. Terminal application — `agent-on-rails-cli` (Python)
 
-Primary operator UX for MVP (ADR-007).
+Primary operator UX for MVP (ADR-007). Repo: [`agent-on-rails-cli`](https://github.com/agent-on-rails/agent-on-rails-cli).
 
-- [ ] Repo bootstrap: `aor init` creates/validates control-plane (docs+specs) via `gh` (AOR-001)
-- [ ] Wire to engine APIs / local orchestrator stubs
-- [ ] Configure AI Team: implementor / reviewer + default & escalate models
-- [ ] Run / status / watch task + GitHub issue sync
-- [ ] Human final-review handoff in terminal
+- [x] Repo bootstrap: `aor init` creates/validates control-plane (docs+specs); optional `--create-github` via `gh` (AOR-001)
+- [x] Engine client stubs (`AOR_ENGINE_URL`); `aor status` / `run` / `watch`
+- [x] Configure AI Team: `aor team` (implementor / reviewer + default & escalate models)
+- [ ] Wire live engine APIs + GitHub issue sync
+- [x] Human final-review handoff: `aor review` (stub until engine persists)
 
 ### 2. Android monitoring app
 
-Push notifications + light control (not Telegram/WhatsApp as primary UI).
+Push notifications + light control (not Telegram/WhatsApp as primary UI). Repo: [`agent-on-rails-android`](https://github.com/agent-on-rails/agent-on-rails-android) (Herry).
 
-- [ ] Repo (e.g. `agent-on-rails-android` / KMP shared with later iOS)
+- [x] Repo scaffold (KMP shared + Compose Android fixture UI)
 - [ ] Auth + project list
-- [ ] Status: running / review / escalated / **FINAL_REVIEW**
+- [ ] Status: running / review / escalated / **FINAL_REVIEW** (live API)
 - [ ] Push when ready for final review
 - [ ] Prompt / approve gates (thin; heavy work stays in CLI + GitHub)
 

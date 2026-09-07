@@ -13,7 +13,8 @@ Unordered candidates after MVP. Promote into specs before implementation.
 
 ## Platform
 
-- [ ] `agent-on-rails-cli` terminal app — **next**
+- [ ] `agent-on-rails-cli` terminal app — **in progress** (scaffold + AOR-001 init)
+- [ ] `agent-on-rails-android` monitoring (KMP) — **scaffold** (Herry)
 - [ ] `agent-on-rails-engine` / `github` / `agent-runtime` / `infrastructure`
 - [ ] `agent-on-rails-sdk` for external adapters
 - [ ] Stronger multi-repo dependency planning
