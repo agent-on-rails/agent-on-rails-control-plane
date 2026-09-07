@@ -1,0 +1,20 @@
+{
+  "id": "lakuyo",
+  "name": "Lakuyo",
+  "description": "POS product delivered through Agent On Rails as the first external dogfood project.",
+  "control_plane_repo": "lakuyo/lakuyo-control-plane",
+  "implementation_repos": [
+    "lakuyo/lakuyo-backend",
+    "lakuyo/lakuyo-android",
+    "lakuyo/lakuyo-ios",
+    "lakuyo/lakuyo-infrastructure"
+  ],
+  "github": {
+    "org": "lakuyo",
+    "labels_prefix": "aor:"
+  },
+  "budgets": {
+    "max_daily_usd": 100,
+    "max_task_usd": 25
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-on-rails.dev/schemas/evidence.schema.json",
+  "title": "AgentOnRailsEvidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec", "result"],
+  "properties": {
+    "spec": {
+      "type": "string",
+      "pattern": "^AOR-[0-9]{3}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^TASK-[0-9]{3}$"
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit"],
+      "properties": {
+        "repository": { "type": "string" },
+        "commit": { "type": "string", "minLength": 7 },
+        "pr": { "type": "string", "format": "uri" }
+      }
+    },
+    "tests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "passed", "failed"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "report_uri": { "type": "string" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result"],
+      "properties": {
+        "result": { "type": "string", "enum": ["pass", "fail"] },
+        "reviewer": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "result": { "type": "string", "enum": ["pass", "fail", "skipped"] },
+        "report_uri": { "type": "string" }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "environment": { "type": "string" },
+        "health_check": { "type": "string", "enum": ["pass", "fail", "skipped"] }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "log_uri": { "type": "string" },
+        "model_tier_final": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "attempts": { "type": "integer", "minimum": 0 },
+        "estimated_cost_usd": { "type": "number", "minimum": 0 }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accepted"],
+      "properties": {
+        "accepted": { "type": "boolean" },
+        "accepted_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

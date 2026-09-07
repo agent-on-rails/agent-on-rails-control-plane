@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-on-rails.dev/schemas/spec.schema.json",
+  "title": "AgentOnRailsSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "status", "intent", "acceptance", "implementation", "verification", "evidence_required"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^AOR-[0-9]{3}$"
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "approved",
+        "planned",
+        "ready",
+        "in_progress",
+        "verifying",
+        "final_review",
+        "done",
+        "retry",
+        "escalate",
+        "human_required"
+      ]
+    },
+    "intent": { "type": "string", "minLength": 1 },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repositories"],
+      "properties": {
+        "repositories": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tests"],
+      "properties": {
+        "tests": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["unit", "integration", "e2e", "manual"]
+          }
+        }
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "implementation-pr",
+          "test-results",
+          "review",
+          "execution-log",
+          "security",
+          "deployment"
+        ]
+      }
+    }
+  }
+}
