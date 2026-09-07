@@ -1,13 +1,16 @@
 # Milestones
 
-## M0 — Authority plane established
+## M0 — Authority plane established ✅
 
 - Control-plane repository structured and readable
 - Product docs, ADRs, policies, schemas, and AOR-001…007 drafts exist
-- AGENTS.md defines boundaries for all agents
+- AGENTS.md + how-to guide define boundaries for all agents
+- Marketing site live: https://agent-on-rails.suherman.net
 
-## M1 — GitHub + planner spine
+## M1 — Operator surfaces + spine
 
+- **CLI (terminal)** — bootstrap, team config, run/status (AOR-001 entry)
+- **Android monitoring** — status + final-review push notifications
 - GitHub App + webhook ingestion (AOR-002)
 - Spec ingest + task planner (AOR-003)
 - Issues/labels reflect state
@@ -21,11 +24,10 @@
 ## M3 — Escalation + dogfood
 
 - Model escalation ladder + cost bounds (AOR-006)
-- Bootstrap CLI docs-first gate (AOR-001)
 - Lakuyo thin-slice dogfood + AOR self-dogfood
 
 ## M4 — Hardening
 
 - Infra baselines, secrets, audit retention
 - Reliability fixes from dogfood
-- Decide console/SDK timing
+- Decide web console / SDK timing

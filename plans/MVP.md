@@ -17,9 +17,11 @@ Prove the core product loop:
 
 ## Out of scope for MVP
 
-- Console, public SDK, public docs site, marketing website
+- Web console, public SDK, public docs site
 - Multi-SCM providers
 - Fully autonomous product invention without human approval
+
+**Note:** Marketing website shipped early (dogfood/brand). Android monitoring is in scope for operator UX alongside CLI (not a full console).
 
 ## Governing specs
 

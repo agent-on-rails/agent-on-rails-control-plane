@@ -4,13 +4,17 @@ Unordered candidates after MVP. Promote into specs before implementation.
 
 ## Product
 
+- [x] Marketing website (`agent-on-rails-website` / agent-on-rails.suherman.net)
+- [ ] Android monitoring app (status + final-review push) — **next with CLI**
 - [ ] Web console for observability and manual overrides
 - [ ] Public documentation site
-- [ ] Marketing website
+- [ ] Desktop monitoring (after Android)
 - [ ] Org-level policy packs / templates
 
 ## Platform
 
+- [ ] `agent-on-rails-cli` terminal app — **next**
+- [ ] `agent-on-rails-engine` / `github` / `agent-runtime` / `infrastructure`
 - [ ] `agent-on-rails-sdk` for external adapters
 - [ ] Stronger multi-repo dependency planning
 - [ ] Evidence warehouse / long-term retention
