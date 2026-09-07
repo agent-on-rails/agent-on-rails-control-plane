@@ -25,6 +25,8 @@ adr/            Architecture Decision Records
 policies/       Permissions, approval, escalation, secrets, cost
 plans/          MVP, milestones, backlog
 schemas/        JSON schemas for project, spec, task, evidence
+guides/         How-to documentation (start with using-the-control-plane.md)
+brand/          Logo mark (transparent)
 examples/       Dogfood / reference projects (e.g. Lakuyo)
 ```
 
@@ -38,7 +40,8 @@ examples/       Dogfood / reference projects (e.g. Lakuyo)
 | `agent-on-rails-cli` | Developer and bootstrap CLI |
 | `agent-on-rails-infrastructure` | Terraform/OpenTofu, Kubernetes, deployment |
 
-Deferred: `agent-on-rails-console`, `agent-on-rails-sdk`, `agent-on-rails-docs`, `agent-on-rails-website`.
+Deferred: `agent-on-rails-console`, `agent-on-rails-sdk`, `agent-on-rails-docs`.
+Marketing site: [`agent-on-rails-website`](https://github.com/agent-on-rails/agent-on-rails-website) → [agent-on-rails.suherman.net](https://agent-on-rails.suherman.net).
 
 ## Authority hierarchy
 
@@ -58,9 +61,12 @@ If implementation diverges from an approved spec, the spec wins until a new ADR 
 ## Getting started
 
 1. Read [`AGENTS.md`](./AGENTS.md) before any change.
-2. Read [`product/vision.md`](./product/vision.md) and [`product/principles.md`](./product/principles.md).
-3. Review active specs under [`specs/`](./specs/).
-4. Follow [`plans/MVP.md`](./plans/MVP.md) for the first milestone.
+2. Follow **[guides/using-the-control-plane.md](./guides/using-the-control-plane.md)** — detailed how-to for humans and agents.
+3. Read [`product/vision.md`](./product/vision.md) and [`product/principles.md`](./product/principles.md).
+4. Review active specs under [`specs/`](./specs/).
+5. Follow [`plans/MVP.md`](./plans/MVP.md) for the first milestone.
+
+Marketing site: [https://agent-on-rails.suherman.net](https://agent-on-rails.suherman.net)
 
 ## Spec lifecycle (summary)
 

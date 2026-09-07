@@ -1,11 +1,21 @@
 # brand/
 
-Placeholder for Agent On Rails brand assets.
+Official Agent On Rails mark (icon only — no wordmark in the file).
 
-## Logo guidance (2026-09-07)
+## Files
 
-- Prefer an **icon mark** (agent + rails metaphor) without embedding the wordmark inside the logo file.
-- Wordmark “Agent On Rails” is set in typography beside/below the icon in UI.
-- Palette: dark navy + bright accent blue (friendly agent on rails).
+| File | Use |
+| --- | --- |
+| `logo-mark.png` | Transparent PNG mark (preferred for UI, GitHub, docs) |
+| `logo-mark-512.png` | 512² export for avatars / splash |
 
-Add SVG/PNG exports here when ready for GitHub org avatar and CLI splash.
+## Usage
+
+- Place the mark beside typography: **Agent** (navy) **On** (accent blue) **Rails** (navy).
+- Do **not** bake the wordmark into the logo file.
+- Works on light and dark surfaces (white helmet + navy + accent blue).
+- Palette: navy `#0B1F3A`, accent `#2EB6FF`, white helmet outline.
+
+## Source
+
+Transparent export derived from the 2026-09-07 brand mark (black matte keyed to alpha).

@@ -113,3 +113,7 @@ Canonical labels: `aor:spec`, `aor:ready`, `aor:running`, `aor:review`, `aor:fai
 2. Cite the governing ADR or policy.
 3. Leave the work in `HUMAN_REQUIRED` rather than guessing.
 4. Open or update a spec/ADR draft instead of inventing a parallel process.
+
+## How to use this control plane
+
+Step-by-step guide for humans and agents: [`guides/using-the-control-plane.md`](./guides/using-the-control-plane.md).
