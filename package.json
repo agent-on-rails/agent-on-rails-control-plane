@@ -1,0 +1,13 @@
+{
+  "name": "agent-on-rails-control-plane",
+  "private": true,
+  "description": "Authority plane for Agent On Rails — specs, ADRs, policies, and operator CI dashboard.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "ci": "node scripts/ci-status.cjs",
+    "ci:once": "node scripts/ci-status.cjs --once",
+    "check": "node scripts/check-control-plane.cjs"
+  }
+}

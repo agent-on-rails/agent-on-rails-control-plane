@@ -257,7 +257,13 @@ Until the CLI ships, treat these as the operating checklist:
 - [ ] Task is bounded (not whole-product)  
 - [ ] Implementor ≠ reviewer  
 - [ ] Evidence artifacts present  
-- [ ] Human final review before merge  
+- [ ] Human final review before merge
+
+Stack health (sibling git + GitHub Actions + public site):
+
+```bash
+npm run ci
+```
 
 ---
 

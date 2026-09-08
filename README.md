@@ -67,6 +67,16 @@ If implementation diverges from an approved spec, the spec wins until a new ADR 
 4. Review active specs under [`specs/`](./specs/).
 5. Follow [`plans/MVP.md`](./plans/MVP.md) for the first milestone.
 
+## Operator dashboard
+
+Same pattern as suherman.net: a live TTY view of sibling repos, GitHub Actions, and the public site.
+
+```bash
+npm run ci            # live dashboard (Ctrl+C to stop)
+npm run ci:once       # snapshot and exit
+npm run check         # schemas, spec/ADR IDs, relative Markdown links
+```
+
 Marketing site: [https://agent-on-rails.suherman.net](https://agent-on-rails.suherman.net)
 
 ## Spec lifecycle (summary)
