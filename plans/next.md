@@ -60,7 +60,7 @@ Thin **onboarding only** (ADR-008 / AOR-008): install `aor` + `aor init`, then h
 - [x] Project bootstrap UI (`aor init`)
 - [ ] Link from website docs / download page
 - [ ] Signed release artifacts (later)
-- [ ] Create GitHub repo `agent-on-rails/agent-on-rails-desktop` + first push
+- [x] Create GitHub repo `agent-on-rails/agent-on-rails-desktop` + first push
 
 ## Later (after MVP loop works)
 
