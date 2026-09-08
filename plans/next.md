@@ -58,7 +58,7 @@ Thin **onboarding only** (ADR-008 / AOR-008): install `aor` + `aor init`, then h
 - [x] Repo scaffold (Tauri 2, macOS + Windows targets)
 - [x] Prerequisites + CLI install steps
 - [x] Project bootstrap UI (`aor init`)
-- [ ] Link from website docs / download page
+- [x] Link from website docs / download page
 - [ ] Signed release artifacts (later)
 - [x] Create GitHub repo `agent-on-rails/agent-on-rails-desktop` + first push
 
