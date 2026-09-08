@@ -48,15 +48,26 @@ Push notifications + light control (not Telegram/WhatsApp as primary UI). Repo: 
 
 | Who | Owns |
 | --- | --- |
-| Iman | Engine, GitHub integration, CLI, infra |
-| Herry | Android monitoring (KMP), later desktop if needed |
+| Iman | Engine, GitHub integration, CLI, desktop setup wizard, infra |
+| Herry | Android monitoring (KMP); dogfood desktop setup + CLI |
+
+### 5. Desktop setup wizard — `agent-on-rails-desktop` (Tauri)
+
+Thin **onboarding only** (ADR-008 / AOR-008): install `aor` + `aor init`, then hand off to CLI/TUI. Not a full desktop console.
+
+- [x] Repo scaffold (Tauri 2, macOS + Windows targets)
+- [x] Prerequisites + CLI install steps
+- [x] Project bootstrap UI (`aor init`)
+- [ ] Link from website docs / download page
+- [ ] Signed release artifacts (later)
+- [ ] Create GitHub repo `agent-on-rails/agent-on-rails-desktop` + first push
 
 ## Later (after MVP loop works)
 
 - Web console
 - Provider SDK
 - Public docs site
-- Desktop monitoring
+- Desktop monitoring (beyond setup wizard)
 - Subscription-style model connectivity (API keys first)
 
 ## Explicitly not next

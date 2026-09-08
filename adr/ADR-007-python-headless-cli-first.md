@@ -12,7 +12,7 @@ We need a default stack for engine/CLI and a stance on whether to invent a propr
 
 1. **Engine and CLI are Python**, preferably FastAPI where an API is needed. Node/TS is acceptable for web frontends later; not for core orchestration.
 2. **Do not invent a proprietary coding agent for MVP.** Implementor/reviewer/specialist roles run via **headless external agents** behind adapters (provider-neutral per ADR-003).
-3. **MVP operator surface is terminal/CLI.** Desktop is later. A first-party **mobile app** is preferred over Telegram/WhatsApp for monitoring, prompting, and final-review notifications (monetizable control surface). Chat messengers are not the primary product UI.
+3. **MVP operator surface is terminal/CLI.** A full desktop console is later. A thin **desktop setup wizard** (install CLI + bootstrap project) is allowed under [ADR-008](./ADR-008-desktop-setup-wizard.md). A first-party **mobile app** is preferred over Telegram/WhatsApp for monitoring, prompting, and final-review notifications (monetizable control surface). Chat messengers are not the primary product UI.
 4. **Model connectivity (MVP):** API keys (and optional self-hosted / in-house endpoints). Deep “use my ChatGPT/Claude subscription” OAuth-style connectivity is a later phase.
 
 ## Consequences

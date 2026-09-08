@@ -9,5 +9,6 @@
 | AOR-005 | Review Loop | draft | [AOR-005-review-loop](./AOR-005-review-loop/spec.md) |
 | AOR-006 | Model Escalation | draft | [AOR-006-model-escalation](./AOR-006-model-escalation/spec.md) |
 | AOR-007 | Evidence | draft | [AOR-007-evidence](./AOR-007-evidence/spec.md) |
+| AOR-008 | Desktop Setup Wizard | draft | [AOR-008-desktop-setup](./AOR-008-desktop-setup/spec.md) |
 
 All specs start as `draft` until human review moves them through the [lifecycle](../architecture/task-state-machine.md).
