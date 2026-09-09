@@ -96,6 +96,7 @@ Respect `policies/escalation.md`, `policies/cost-controls.md`, and `policies/exe
 - Cap absolute runaway attempts and cost — never silent infinite scheduling
 - Escalate to human for architecture, security, destructive ops, forever-loop cap, absolute max, or **environment stuck**
 - Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, continue independent work when safe, emit run report under the watchdog
+- Every implementor / fixer / reviewer assignment must end with a standardized **role report** ([`policies/role-reports.md`](./policies/role-reports.md) / [`schemas/role-report.schema.json`](./schemas/role-report.schema.json))
 
 ## Review separation
 

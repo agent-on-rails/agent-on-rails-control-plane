@@ -4,7 +4,8 @@ title: Agent Execution
 status: draft
 intent: >
   Execute coding agents against a deterministic context package and produce
-  branch, implementation, tests, commit, and PR artifacts.
+  branch, implementation, tests, commit, PR artifacts, and a mandatory
+  standardized role report (implementor / fixer) at assignment end.
 implementation:
   repositories:
     - agent-on-rails-engine
@@ -33,9 +34,10 @@ An execution is deterministic in *inputs*: the runtime assembles SPEC + ACCEPTAN
 4. Runtime executes with least-privilege permissions **and** watchdog bounds (wall-clock, per-command timeout including **npm/yarn/pnpm**, heartbeat).
 5. Agent follows branch → implement → test → commit → PR.
 6. Structured `ExecutionResult` returns to the engine, including `failure_class` when failed (`coding` | `environment` | `policy` | …) and per-step outcomes (`pass` | `fail` | `blocked_environment` | `skipped`).
-7. Vague prompts (“Implement feature X”) are prohibited as sole input.
-8. Hung commands (Gradle waiting for a disconnected device, **hung `npm install` / `npm test`**) must be killed and reported as `environment`, with human notification — not left running unsupervised.
-9. When a verification step is blocked by environment, the runtime/engine may continue **independent** remaining steps that do not require that capability; it must not invent a green test result for the blocked step.
+7. Every implementor/fixer assignment **must end** with a valid **role report** conforming to [`schemas/role-report.schema.json`](../../schemas/role-report.schema.json) and [`policies/role-reports.md`](../../policies/role-reports.md). Free-form chat is not a substitute. Watchdog kills still produce an `aborted` / `blocked_environment` report from the runtime.
+8. Vague prompts (“Implement feature X”) are prohibited as sole input.
+9. Hung commands (Gradle waiting for a disconnected device, **hung `npm install` / `npm test`**) must be killed and reported as `environment`, with human notification — not left running unsupervised.
+10. When a verification step is blocked by environment, the runtime/engine may continue **independent** remaining steps that do not require that capability; it must not invent a green test result for the blocked step.
 
 ## Out of scope
 

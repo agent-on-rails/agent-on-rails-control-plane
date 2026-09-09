@@ -9,6 +9,8 @@
 - [ ] After cancelling a blocked step, the manager continues **independent** ready tasks that do not require the blocked capability.
 - [ ] Dependent tasks are not run as if the blocked verification passed; they remain skipped/waiting with reasons in the run report.
 - [ ] Preflight fails closed when Node/npm is missing for a Node task, or when a device-dependent task has no connected device (no wasted model attempt on that step).
+- [ ] Every implementor / fixer / reviewer assignment in the wave ends with a role report validating against `schemas/role-report.schema.json`.
+- [ ] Manager refuses to treat an assignment as complete without a role report (runtime may synthesize abort/blocked reports).
 - [ ] Every orchestration wave emits a **run report** (completed / blocked_environment / skipped_due_to_deps / human_actions_needed / notifications_sent).
 - [ ] Blocking env gaps leave the wave in `HUMAN_REQUIRED` (or equivalent) with the run report attached — agents do not mark `DONE`.
 - [ ] `FINAL_REVIEW` / stuck / `HUMAN_REQUIRED` remain visible via GitHub label and/or CLI watch and/or Android push.

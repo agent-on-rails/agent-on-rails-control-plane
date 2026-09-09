@@ -17,4 +17,4 @@
 15. **Human final review** — Agents prepare; humans own final review / merge at the gate.
 16. **CLI first** — Terminal/Python operators for MVP; mobile monitoring later (not Telegram/WhatsApp as primary UI).
 17. **Auditability** — Escalation history, reviews, and evidence are durable and queryable.
-18. **Dogfood with real products** — Prefer Lakuyo and Agent On Rails itself over toy demos.
+19. **Standard role reports** — Implementor, fixer, and reviewer assignments always end with the same structured report schema — not free-form chat alone.

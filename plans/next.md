@@ -30,9 +30,9 @@ Repo: `agent-on-rails-engine` (+ `agent-on-rails-agent-runtime`).
 
 - [ ] **AOR-006** decision function: failure signature → loop verdict (`normal_progress` vs `forever_loop`) → retry / escalate / `HUMAN_REQUIRED`; audit log
 - [ ] **Watchdog** in runtime: wall-clock, command timeout (Gradle **and npm**), heartbeat, device/Node preflight ([`execution-watchdog.md`](../policies/execution-watchdog.md))
-- [ ] **AOR-004** structured `ExecutionResult` with `failure_class` + per-step outcomes
-- [ ] **AOR-005** reject → requeue under AOR-006 (no unbounded loop)
-- [ ] **AOR-009** manager loop: implement → review → fix → escalate; on env stuck → notify + stop + **continue independent** + **run report**
+- [ ] **AOR-004** structured `ExecutionResult` + mandatory **role report** (`schemas/role-report.schema.json`)
+- [ ] **AOR-005** reject → requeue under AOR-006; reviewer ends with role report + finding signatures
+- [ ] **AOR-009** manager loop: implement → review → fix → escalate; on env stuck → notify + stop + **continue independent** + **run report**; every hop closes with a role report
 - [ ] Wire CLI `aor run` / `watch` + GitHub labels to live engine status
 
 ### 2. Terminal application — `agent-on-rails-cli` (Python)

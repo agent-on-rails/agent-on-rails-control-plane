@@ -172,7 +172,9 @@ Always require humans for architecture, security, secrets, destructive ops, and 
 
 ### Reject / send back
 
-Reviewer (or you) rejects with structured feedback → AOR-006 decides `normal_progress` (different bug) vs `forever_loop` (same signature) under [`policies/escalation.md`](../policies/escalation.md). Environment hangs (device disconnect, stuck Gradle, hung **npm**) are handled by [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) — cancel + notify, continue independent work when safe, end with a run report; do not escalate model tier.
+### Reject / send back
+
+Reviewer (or you) rejects with structured feedback → AOR-006 decides `normal_progress` (different bug) vs `forever_loop` (same signature) under [`policies/escalation.md`](../policies/escalation.md). Every implementor / fixer / reviewer hop must close with a standardized **role report** ([`policies/role-reports.md`](../policies/role-reports.md)). Environment hangs (device disconnect, stuck Gradle, hung **npm**) are handled by [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) — cancel + notify, continue independent work when safe, end with a run report; do not escalate model tier.
 
 ---
 

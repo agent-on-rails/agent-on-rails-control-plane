@@ -155,7 +155,7 @@ Used for **difficulty** and for **forever_loop** strikes — not to punish healt
 ## Rules
 
 - Escalation must be deterministic given failure class, **loop verdict**, attempt history, and current tier.
-- Reviewer rejects must be structured enough to build a failure signature (AOR-005).
+- Reviewer rejects must be structured enough to build a failure signature (AOR-005) and emitted inside a standardized **role report** ([`policies/role-reports.md`](../../policies/role-reports.md)).
 - Blind re-runs without new reviewer feedback are prohibited.
 - Every loop verdict and escalation is audited: `failure_signature`, `verdict`, `from_tier`, `to_tier`, `reason`, `task_id`, `attempt`.
 - Hitting `forever_loop_same_signature_max` on the **same** signature → `HUMAN_REQUIRED`.

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-on-rails.dev/schemas/role-report.schema.json",
+  "title": "AgentOnRailsRoleReport",
+  "description": "Standard end-of-assignment report for implementor, fixer, and reviewer roles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "role",
+    "assignment_id",
+    "task_id",
+    "spec_id",
+    "outcome",
+    "summary",
+    "ended_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["implementor", "fixer", "reviewer"]
+    },
+    "assignment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^TASK-[0-9]{3}$"
+    },
+    "spec_id": {
+      "type": "string",
+      "pattern": "^AOR-[0-9]{3}$"
+    },
+    "model_tier": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "blocked_environment",
+        "accepted",
+        "rejected",
+        "aborted"
+      ]
+    },
+    "failure_class": {
+      "type": ["string", "null"],
+      "enum": ["coding", "no_progress", "environment", "policy", "cost", null]
+    },
+    "failure_signatures": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository": { "type": "string" },
+        "branch": { "type": "string" },
+        "commit": { "type": "string" },
+        "pr": { "type": "string" }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "result"],
+        "properties": {
+          "name": { "type": "string" },
+          "result": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "blocked_environment",
+              "skipped",
+              "not_run"
+            ]
+          },
+          "detail": { "type": "string" }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "description": "Required for reviewer reject; optional otherwise.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "summary", "signature"],
+        "properties": {
+          "code": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "summary": { "type": "string" },
+          "signature": { "type": "string" },
+          "acceptance_ref": { "type": "string" }
+        }
+      }
+    },
+    "human_actions_needed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_recommended": {
+      "type": "string",
+      "enum": [
+        "review",
+        "fix",
+        "escalate",
+        "human_required",
+        "final_review",
+        "continue_independent",
+        "none"
+      ]
+    }
+  }
+}

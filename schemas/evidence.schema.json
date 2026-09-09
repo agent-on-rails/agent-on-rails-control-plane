@@ -141,6 +141,33 @@
         "report_uri": { "type": "string" }
       }
     },
+    "role_reports": {
+      "type": "array",
+      "description": "Per-assignment reports (implementor/fixer/reviewer). Items SHOULD validate against role-report.schema.json.",
+      "items": {
+        "type": "object",
+        "required": ["schema_version", "role", "assignment_id", "task_id", "outcome", "summary"],
+        "properties": {
+          "schema_version": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["implementor", "fixer", "reviewer"]
+          },
+          "assignment_id": { "type": "string" },
+          "task_id": {
+            "type": "string",
+            "pattern": "^TASK-[0-9]{3}$"
+          },
+          "spec_id": {
+            "type": "string",
+            "pattern": "^AOR-[0-9]{3}$"
+          },
+          "outcome": { "type": "string" },
+          "summary": { "type": "string" },
+          "report_uri": { "type": "string" }
+        }
+      }
+    },
     "result": {
       "type": "object",
       "additionalProperties": false,

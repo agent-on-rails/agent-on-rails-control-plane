@@ -94,6 +94,7 @@ Unattended runtime must:
 6. **Never** treat a skipped env-blocked verification as a green acceptance check.
 7. **Never** auto-merge; human owns `FINAL_REVIEW → DONE`.
 8. Persist orchestration log + **run report** suitable for evidence (AOR-007) and GitHub.
+9. Every implementor / fixer / reviewer hop **must** close with a standardized **role report** ([`policies/role-reports.md`](../../policies/role-reports.md)); the manager must not schedule the next hop on an assignment that lacks a valid report (except runtime-synthesized abort reports).
 
 ## Continue-independent + end report (normative)
 
@@ -117,11 +118,11 @@ Run report must list: completed, `blocked_environment`, skipped-due-to-deps, cod
 
 | Decision | Input | Output |
 | --- | --- | --- |
-| Schedule next role | Task state, deps | Implementor or reviewer session |
-| On pass | Review evidence | Evidence finalize → maybe more tasks → `FINAL_REVIEW` |
-| On coding fail | Feedback + **failure signature** + history | AOR-006 verdict: `normal_progress` → continue; `forever_loop` → escalate / human |
-| On env stuck / timeout | Watchdog event | Cancel step, notify, continue independent work, record block |
-| On wave idle | Graph + blocks | Emit run report; `HUMAN_REQUIRED` and/or `FINAL_REVIEW` |
+| Schedule next role | Task state, deps, prior **role report** | Implementor, fixer, or reviewer session |
+| On pass | Reviewer role report `accepted` | Evidence finalize → maybe more tasks → `FINAL_REVIEW` |
+| On coding fail | Reviewer/fixer role report + **failure signature** + history | AOR-006 verdict: `normal_progress` → continue; `forever_loop` → escalate / human |
+| On env stuck / timeout | Watchdog event + role report `blocked_environment` | Cancel step, notify, continue independent work, record block |
+| On wave idle | Graph + blocks + role reports | Emit run report; `HUMAN_REQUIRED` and/or `FINAL_REVIEW` |
 | On forever-loop cap / absolute max | Policy | `HUMAN_REQUIRED` |
 
 ## Acceptance intent
@@ -132,6 +133,7 @@ Run report must list: completed, `blocked_environment`, skipped-due-to-deps, cod
 - Independent work continues after a blocked env step when the task graph allows it
 - Environment failures do not escalate model tier
 - End-of-wave **run report** is always produced
+- Every role assignment ends with a standardized role report
 - Forever-loops are impossible under default policy
 
 ## Depends on

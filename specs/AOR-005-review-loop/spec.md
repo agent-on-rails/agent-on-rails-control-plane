@@ -37,9 +37,10 @@ The reviewer receives spec, acceptance criteria, diff, tests, and evidence—not
 2. Reviewer cannot access implementer hidden traces by default.
 3. Accept moves task to evidence finalization / verifying.
 4. Reject returns **structured** feedback (finding codes / failing checks) so AOR-006 can build a **failure signature** and decide `normal_progress` vs `forever_loop`.
-5. Reject requeues implementer under AOR-006: distinct bugs continue as normal fix↔review; same signature repeating hits the forever-loop ladder — not a blunt “N attempts = stop.”
-6. Implementer cannot set `DONE`.
-7. Environment / watchdog failures are not reviewer rejects; they bypass this loop into AOR-006 `environment` handling.
+5. Every reviewer assignment **must end** with a valid **role report** (`outcome: accepted | rejected`, plus `findings[]` with `signature` on reject) per [`schemas/role-report.schema.json`](../../schemas/role-report.schema.json) and [`policies/role-reports.md`](../../policies/role-reports.md).
+6. Reject requeues implementer/fixer under AOR-006: distinct bugs continue as normal fix↔review; same signature repeating hits the forever-loop ladder — not a blunt “N attempts = stop.”
+7. Implementer cannot set `DONE`.
+8. Environment / watchdog failures are not reviewer rejects; they bypass this loop into AOR-006 `environment` handling.
 
 ## Out of scope
 
