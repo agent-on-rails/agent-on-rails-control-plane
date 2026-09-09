@@ -14,15 +14,15 @@
 | [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md) | Task API MVP, engine-owned state, full RunReport, wave-level `HUMAN_REQUIRED` for env; `status: review` |
 | [`policies/escalation.md`](../policies/escalation.md) | Aligned to Option A + env semantics |
 | [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) | Specific-first Gradle classification + RunReport fields |
-| [`schemas/evidence.schema.json`](../schemas/evidence.schema.json) | `run_report` gains `spec_id`, `coding_failures`, `notifications_sent` |
+| [`schemas/evidence.schema.json`](../schemas/evidence.schema.json) | `run_report.required` matches AOR-009 full field set (empty arrays OK) |
 
 ## Phase 1 checklist (sibling repos after APPROVED)
 
 1. [ ] **Runtime:** Fix Gradle watchdog classification (specific-first); regression tests for `test` / `build` / `install*` / `connected*Test` / `adb`.
-2. [ ] **Engine + CLI:** Implement shared task API — `POST/GET /v1/tasks/{id}`, `POST .../events`, `GET .../history` — so `aor run TASK-001` with `AOR_ENGINE_URL` no longer 404s.
+2. [ ] **Engine + CLI:** Task bootstrap + run — `POST /v1/tasks` (register), then `POST/GET /v1/tasks/{id}`, `.../events`, `.../history`, `.../report`; `aor run` register-if-needed; unknown `run` → 404.
 3. [ ] **Engine:** Persist authoritative task / attempt / tier / strike / signature history; callers report events only.
 4. [ ] **Engine:** AOR-006 Option A ladder + ceiling tests match control-plane wording.
-5. [ ] **Runtime + Engine:** Emit RunReport with all normative fields; attach via AOR-007 evidence shape.
+5. [ ] **Engine:** Emit RunReport (sole author) with all required keys validating against schema; Phase 1 wave = one `.../run` until idle; attach via AOR-007.
 
 ## Explicitly deferred to Phase 2+
 

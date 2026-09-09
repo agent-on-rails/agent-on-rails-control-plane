@@ -74,7 +74,17 @@
     "run_report": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["terminal_status"],
+      "description": "Wave run report. Required keys must always be present; list fields MAY be empty arrays when nothing applies.",
+      "required": [
+        "spec_id",
+        "terminal_status",
+        "completed",
+        "blocked_environment",
+        "skipped_due_to_deps",
+        "coding_failures",
+        "human_actions_needed",
+        "notifications_sent"
+      ],
       "properties": {
         "spec_id": {
           "type": "string",

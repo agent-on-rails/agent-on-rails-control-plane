@@ -126,7 +126,7 @@ Rules:
 
 ## Run report (required at end of orchestration wave)
 
-Every unattended wave (AOR-009) must produce a durable **run report** (also linked from evidence / GitHub). Required sections: `spec_id`, `terminal_status`, `completed`, `blocked_environment`, `skipped_due_to_deps`, `coding_failures`, `human_actions_needed`, `notifications_sent`.
+Every unattended wave (AOR-009) must produce a durable **run report** (also linked from evidence / GitHub). The **engine** emits and persists it. Required keys (must be present; lists MAY be `[]`): `spec_id`, `terminal_status`, `completed`, `blocked_environment`, `skipped_due_to_deps`, `coding_failures`, `human_actions_needed`, `notifications_sent`. These match `schemas/evidence.schema.json` `run_report.required`.
 
 ```yaml
 run_report:

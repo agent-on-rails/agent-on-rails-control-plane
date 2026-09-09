@@ -106,13 +106,28 @@ Unattended runtime must:
 
 CLI and engine **must** share one authoritative contract. With `AOR_ENGINE_URL` set, `aor run TASK-001` must not fail because task endpoints are missing.
 
-Minimum surface:
+### Bootstrap / registration
+
+Tasks must be **registered** before (or as part of) the first run. Engine is the source of truth after registration.
 
 ```text
-POST /v1/tasks/{task_id}/run      # start or resume orchestration for the task
+POST /v1/tasks                    # register / upsert task (bootstrap)
+                                  # body MUST include: task_id, spec_id
+                                  # body MAY include: title, deps[], repository, acceptance refs
+                                  # idempotent on task_id (same spec_id → 200; conflicting spec_id → 409)
+```
+
+`aor run TASK-001` MAY call `POST /v1/tasks` then `POST /v1/tasks/{task_id}/run`, or a single CLI path that performs register-if-needed then run. Either way, the engine must end with a durable task record before orchestration starts.
+
+### Runtime surface
+
+```text
+POST /v1/tasks/{task_id}/run      # start or resume orchestration for a registered task
+                                  # 404 if task_id is unknown (do not invent state from the URL alone)
 GET  /v1/tasks/{task_id}          # current authoritative task state
 POST /v1/tasks/{task_id}/events   # report runtime/watchdog/role-report events
 GET  /v1/tasks/{task_id}/history  # attempts, decisions, signatures
+GET  /v1/tasks/{task_id}/report   # latest run report for this task’s wave scope (Phase 1)
 ```
 
 Exact JSON field names may evolve in OpenAPI, but these routes (or equivalent versioned aliases) are required for Phase 1 coherence. `/v1/escalation/decide` may remain as an internal/library endpoint; it is **not** a substitute for task ownership.
@@ -176,7 +191,7 @@ npm hang / device wait / gradle stuck
 
 Every unattended wave must produce a durable **run report** humans can read without replaying agent logs. Schema: [`schemas/evidence.schema.json`](../../schemas/evidence.schema.json) (`run_report`) and [`policies/execution-watchdog.md`](../../policies/execution-watchdog.md).
 
-Required fields:
+**Schema `required` must match this list** (machine-enforceable). List fields MUST be present and MAY be empty arrays when nothing applies — omission is invalid.
 
 | Field | Meaning |
 | --- | --- |
@@ -188,6 +203,17 @@ Required fields:
 | `coding_failures` | Tasks with coding fail history (attempts, last tier) |
 | `human_actions_needed` | Explicit operator actions |
 | `notifications_sent` | Channels / reasons already notified |
+
+#### Phase 1 wave ownership
+
+| Concern | Owner |
+| --- | --- |
+| Emit / persist RunReport | **Engine only** |
+| Contribute events (watchdog cancel, role report, notify ack) | Runtime / CLI via `POST .../events` |
+| Wave scope (Phase 1) | The orchestration opened by one `POST .../run` until that run is idle (task terminal, or blocked with nothing left to schedule for that task) |
+| Multi-task aggregated wave | Phase 2+ Manager; Phase 1 may emit a **per-task** report that still includes every required field |
+
+Runtime must not invent a wave report. CLI may display `GET .../report` but does not author it.
 
 ```yaml
 run_report:
@@ -237,10 +263,10 @@ run_report:
 Control-plane + sibling repos must land this slice before treating runtime as production dogfood:
 
 1. Fix Gradle watchdog classification (specific-first) — runtime
-2. Align CLI ↔ Engine task API (this section)
+2. Align CLI ↔ Engine task API including bootstrap (`POST /v1/tasks`) — this section
 3. Persistent engine task / attempt / history state (this section)
 4. AOR-006 Option A cap semantics — already normative in AOR-006
-5. Full RunReport fields above — runtime + evidence attachment
+5. Full RunReport fields + schema `required` alignment — **engine owns/emits**; Phase 1 wave = one `.../run` until idle
 
 Phase 2+ (manager adapters, multi-repo graph, full integration suites) remains in scope of this spec’s acceptance but may ship after Phase 1 evidence for the coherence items.
 
@@ -251,9 +277,10 @@ Phase 2+ (manager adapters, multi-repo graph, full integration suites) remains i
 - Humans are notified on timeout/stuck, not only at the very end
 - Independent work continues after a blocked env step when the task graph allows it
 - Environment failures do not escalate model tier; `HUMAN_REQUIRED` is wave-level for blocking gaps
-- End-of-wave **run report** always includes the normative fields above
+- End-of-wave **run report** always includes the normative required keys (schema-enforced; empty arrays OK)
+- Engine is the sole RunReport author; CLI/runtime report events only
 - Every role assignment ends with a standardized role report
-- CLI and engine share the task API; engine owns history
+- CLI and engine share the task API (register then run); engine owns history
 - Forever-loops are impossible under default policy (AOR-006 Option A)
 
 ## Depends on

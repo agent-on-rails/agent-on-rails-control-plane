@@ -39,9 +39,7 @@
     "skipped_due_to_deps": [
       { "task_id": "TASK-003", "waiting_on": "TASK-002" }
     ],
-    "coding_failures": [
-      { "task_id": "TASK-004", "attempts": 2, "last_tier": 2 }
-    ],
+    "coding_failures": [],
     "human_actions_needed": [
       "Fix local npm / use CI package install for TASK-002"
     ],
