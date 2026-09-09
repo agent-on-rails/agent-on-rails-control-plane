@@ -24,6 +24,17 @@ Status after M0 + marketing site + CLI handoff foundation. Herry CLI `main` revi
 
 ## Next (ordered)
 
+### 0. Control-plane coherence — **in REVIEW** (2026-09-09)
+
+Plan: [`phase-1-backend-coherence.md`](./phase-1-backend-coherence.md)
+
+- [x] AOR-006 Option A forever-loop ladder (primary stop) + strike max as ceiling
+- [x] AOR-009 task API + engine-owned state + full RunReport + wave-level env `HUMAN_REQUIRED`
+- [x] Watchdog policy: Gradle specific-first classification
+- [x] Evidence schema RunReport fields expanded
+- [ ] **Human** `REVIEW → APPROVED` on AOR-006 and AOR-009
+- [ ] Only then treat sibling Phase 1 implementation as contract-compliant (not spike)
+
 ### 1. Engine spine — escalate + watchdog first
 
 Repos:
@@ -31,7 +42,11 @@ Repos:
 - [`agent-on-rails-agent-runtime`](https://github.com/agent-on-rails/agent-on-rails-agent-runtime) (scaffold on `main`, 2026-09-09)
 
 - [x] **AOR-006** decision function (library + `/v1/escalation/decide`): failure signature → loop verdict (`normal_progress` vs `forever_loop`) → retry / escalate / `HUMAN_REQUIRED`; unit tests
+- [ ] Align decide path to **Option A** wording + engine-owned history (Phase 1)
 - [x] **Watchdog** library: wall-clock, command timeout (Gradle **and npm**), heartbeat, preflight helpers, run-report structure ([`execution-watchdog.md`](../policies/execution-watchdog.md))
+- [ ] Fix Gradle specific-first classification (Phase 1 P0)
+- [ ] Task API + persistent task state (Phase 1 P0)
+- [ ] Full RunReport fields per AOR-009 / evidence schema (Phase 1)
 - [ ] **AOR-004** structured `ExecutionResult` + mandatory **role report** (`schemas/role-report.schema.json`)
 - [ ] **AOR-005** reject → requeue under AOR-006; reviewer ends with role report + finding signatures
 - [ ] **AOR-009** manager loop: implement → review → fix → escalate; on env stuck → notify + stop + **continue independent** + **run report**; every hop closes with a role report

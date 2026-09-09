@@ -25,6 +25,7 @@
     "attempts": 3
   },
   "run_report": {
+    "spec_id": "AOR-009",
     "terminal_status": "human_required",
     "completed": [{ "task_id": "TASK-001", "result": "pass" }],
     "blocked_environment": [
@@ -35,8 +36,15 @@
         "notified": true
       }
     ],
+    "skipped_due_to_deps": [
+      { "task_id": "TASK-003", "waiting_on": "TASK-002" }
+    ],
+    "coding_failures": [],
     "human_actions_needed": [
       "Fix local npm / use CI package install for TASK-002"
+    ],
+    "notifications_sent": [
+      { "channel": "github", "reason": "env_stuck" }
     ]
   },
   "review": { "result": "pass" },
