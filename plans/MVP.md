@@ -32,9 +32,11 @@ Prove the core product loop:
 | [AOR-003](../specs/AOR-003-task-planner/spec.md) | Task graphs |
 | [AOR-004](../specs/AOR-004-agent-execution/spec.md) | Bounded agent runs |
 | [AOR-005](../specs/AOR-005-review-loop/spec.md) | Independent review |
-| [AOR-006](../specs/AOR-006-model-escalation/spec.md) | Cheap-first escalation + forever-loop hard stop |
+| [AOR-006](../specs/AOR-006-model-escalation/spec.md) | Cheap-first escalation + forever-loop hard stop (**Option A** ladder) |
 | [AOR-007](../specs/AOR-007-evidence/spec.md) | Evidence before done |
-| [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md) | Unattended AI Team + env watchdog |
+| [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md) | Unattended AI Team + env watchdog + RunReport |
+
+Phase 1 coherence plan (pre-full-manager): [`phase-1-backend-coherence.md`](./phase-1-backend-coherence.md).
 
 ## Dogfood
 

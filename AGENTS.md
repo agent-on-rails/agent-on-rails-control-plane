@@ -92,10 +92,10 @@ Respect `policies/escalation.md`, `policies/cost-controls.md`, and `policies/exe
 
 - Start at Tier 1 (fast / inexpensive)
 - Escalate only after bounded same-tier retries **or** when loop verdict is `forever_loop` (same failure signature)
-- Cap forever-loop strikes on the **same** bug; distinct bugs across fix↔review are `normal_progress` (AOR decides — not a blunt attempt counter)
+- Cap forever-loop strikes on the **same** bug; distinct bugs across fix↔review are `normal_progress` (AOR decides — not a blunt attempt counter). Primary forever-loop stop is the **model ladder** (tier 1→2→3→human); same-signature max is an additional safety ceiling (AOR-006 Option A).
 - Cap absolute runaway attempts and cost — never silent infinite scheduling
-- Escalate to human for architecture, security, destructive ops, forever-loop cap, absolute max, or **environment stuck**
-- Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, continue independent work when safe, emit run report under the watchdog
+- Escalate to human for architecture, security, destructive ops, forever-loop at max tier / strike ceiling, absolute max, or **blocking environment gaps at wave idle**
+- Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, mark `blocked_environment`, continue independent work when safe, emit run report under the watchdog
 - Every implementor / fixer / reviewer assignment must end with a standardized **role report** ([`policies/role-reports.md`](./policies/role-reports.md) / [`schemas/role-report.schema.json`](./schemas/role-report.schema.json))
 
 ## Review separation

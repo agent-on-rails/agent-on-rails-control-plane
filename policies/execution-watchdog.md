@@ -46,10 +46,35 @@ execution_watchdog:
     failure_class: environment
     notify: [cli_watch, android_push, github_label, github_comment]
     continue_independent_work: true
-    next_if_blocking_acceptance: human_required
+    next_if_blocking_acceptance: human_required  # wave-idle conclusion, not every cancel
   on_run_end:
     emit_run_report: true
 ```
+
+## Command classification (specific-first)
+
+Timeout maps depend on correct classification. Prefer **specific** tokens before generic device heuristics.
+
+Order of evaluation (first match wins):
+
+1. Device / install-specific (`adb`, `emulator`, `installDebug`, `installRelease`, `connectedAndroidTest`, `connected*Test`)
+2. Test (`test`, `check`, `npm test`, `pytest`, `./gradlew test`, …)
+3. Build (`build`, `assemble*`, `npm run build`, `./gradlew build`, …)
+4. Package install (`npm ci`, `npm install`, `yarn`, `pnpm`, …)
+5. Default
+
+Regression cases (must not classify as `device_dependent` solely because the binary is `gradlew`):
+
+| Command | Class |
+| --- | --- |
+| `./gradlew test` | `test` |
+| `./gradlew connectedAndroidTest` | `device_dependent` (or test+device) |
+| `./gradlew assembleDebug` | `build` |
+| `./gradlew build` | `build` |
+| `./gradlew installDebug` | `device_dependent` |
+| `adb devices` | `device_dependent` |
+
+Misclassifying Gradle test/build as device-dependent can kill valid work early (device default ~5m vs test ~20m / build ~15m).
 
 ## Preflight (before spending an attempt)
 
@@ -94,13 +119,14 @@ Rules:
 
 - Only continue tasks/steps whose dependencies are satisfied and that do **not** require the blocked capability (device, local npm, network registry, etc.).
 - Do **not** silently mark acceptance criteria satisfied by skipping required verification. Skipped/blocked checks stay `blocked_environment` in the run report.
+- Mark the cancelled step `blocked_environment` immediately; do **not** automatically set wave-level `HUMAN_REQUIRED` on every env cancel.
 - If remaining ready work exists → keep scheduling it.
 - If nothing else can run and blocking acceptance remains → `HUMAN_REQUIRED` (or `FINAL_REVIEW` only when policy allows “gaps disclosed” — default is human gate for blocking gaps).
 - Never invent a substitute “passed” test for a skipped env-blocked verification.
 
 ## Run report (required at end of orchestration wave)
 
-Every unattended wave (AOR-009) must produce a durable **run report** (also linked from evidence / GitHub):
+Every unattended wave (AOR-009) must produce a durable **run report** (also linked from evidence / GitHub). Required sections: `spec_id`, `terminal_status`, `completed`, `blocked_environment`, `skipped_due_to_deps`, `coding_failures`, `human_actions_needed`, `notifications_sent`.
 
 ```yaml
 run_report:
@@ -119,10 +145,10 @@ run_report:
     - Fix local Node/npm or CI package install for TASK-002
     - Reconnect Android device for TASK-003
   notifications_sent:
-    - { channel: github_label, at: "..." }
+    - { channel: github, reason: env_stuck, at: "..." }
 ```
 
-Humans should be able to read this without replaying agent traces.
+Humans should be able to read this without replaying agent traces. Validate attached reports against [`schemas/evidence.schema.json`](../schemas/evidence.schema.json) `run_report`.
 
 ## What this is not
 

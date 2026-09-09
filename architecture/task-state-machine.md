@@ -52,7 +52,7 @@ DONE                    HUMAN_REQUIRED
 
 ## Watchdog vs escalation
 
-- **Coding** failures: AOR compares **failure signatures** and verdicts `normal_progress` (different bugs — continue fix↔review) vs `forever_loop` (same stuck failure — escalate then `HUMAN_REQUIRED`). See [`policies/escalation.md`](../policies/escalation.md) / AOR-006.
+- **Coding** failures: AOR compares **failure signatures** and verdicts `normal_progress` (different bugs — continue fix↔review) vs `forever_loop` (same stuck failure — **Option A** ladder: escalate tier, then `HUMAN_REQUIRED` at max tier; strike max is a safety ceiling). See [`policies/escalation.md`](../policies/escalation.md) / AOR-006.
 - **Environment** stuckness (hung build waiting for a disconnected device, hung **npm**/package install, missing local tooling) follows:
 
 ```
@@ -60,11 +60,13 @@ timeout / no heartbeat
         │
         ▼
   STOP stuck step + notify human
+  mark blocked_environment
         │
         ├─► continue independent ready tasks (AOR-009)
         │
-        └─► wave end → RUN REPORT
+        └─► wave idle → RUN REPORT
               blocking gaps → HUMAN_REQUIRED
+              (not automatic on every env cancel)
 ```
 
 Do **not** climb the model ladder for environment failures. See [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) and AOR-009.
