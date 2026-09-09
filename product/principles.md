@@ -1,12 +1,12 @@
 # Principles
 
-1. **Docs before agents** — Product intent, architecture, and specs precede implementation.
-2. **Specs are contracts** — Approved specs bind planners, agents, and reviewers.
-3. **Control plane is mandatory** — No unbounded agent execution without an approved control-plane contract.
-4. **One authority repo** — Docs + SDD specs live together in the control plane for consumer projects.
-5. **AI Team over lone agents** — Define Manager / Implementor / Reviewer (+ specialists); operate the team until the contract is satisfied.
-6. **Separation of planes** — Authority, control, and execution stay distinct.
-7. **GitHub is the surface** — Issues, PRs, Checks, and labels are the MVP control UI.
+1. **GitHub is the surface** — Issues, PRs, Checks, and labels are the MVP operating UI; agents ship through Git, not a parallel console.
+2. **Docs before agents** — Product intent, architecture, and specs precede implementation.
+3. **Specs are contracts** — Approved specs bind planners, agents, and reviewers.
+4. **Control plane is mandatory** — No unbounded agent execution without an approved control-plane contract.
+5. **One authority repo** — Docs + SDD specs live together in the control plane for consumer projects.
+6. **AI Team over lone agents** — Define Manager / Implementor / Reviewer (+ specialists); operate the team until the contract is satisfied.
+7. **Separation of planes** — Authority, control, and execution stay distinct.
 8. **Bounded context** — Agents receive contracts and task scope, not vague prompts.
 9. **Provider neutrality + headless agents** — Adapters over inventing a proprietary coding agent for MVP.
 10. **Cheap first** — Start with inexpensive models; escalate on failure within bounds.
