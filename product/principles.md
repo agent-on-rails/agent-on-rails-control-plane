@@ -10,7 +10,7 @@
 8. **Bounded context** — Agents receive contracts and task scope, not vague prompts.
 9. **Provider neutrality + headless agents** — Adapters over inventing a proprietary coding agent for MVP.
 10. **Cheap first** — Start with inexpensive models; escalate on failure within bounds.
-11. **No forever loops** — Cap same-tier retries and max attempts; escalate to human when bounds are hit.
+11. **No forever loops** — AOR detects stuck **same** failures (failure signatures); distinct bugs across fix↔review are normal progress. Cap forever-loop strikes and runaway attempts; escalate to human when stuck.
 12. **Fail fast on environment** — Hung device/network/build/**npm** waits are watchdog failures: notify, stop that path, continue independent work when safe, report gaps — not reasons to burn a smarter model or an unsupervised hour.
 13. **No self-approval** — Implementers do not mark their own work done.
 14. **Evidence over assertion** — “Done” requires artifacts that satisfy acceptance criteria.

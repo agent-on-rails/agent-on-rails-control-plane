@@ -14,13 +14,13 @@ Status after M0 + marketing site + CLI handoff foundation. Herry CLI `main` revi
 
 | # | Gap | Spec / policy | Why first |
 | --- | --- | --- | --- |
-| **13** | Intelligent escalation | [AOR-006](../specs/AOR-006-model-escalation/spec.md), [`policies/escalation.md`](../policies/escalation.md) | Stops forever fix/review loops; hard `max_attempts` → `HUMAN_REQUIRED` |
+| **13** | Intelligent escalation | [AOR-006](../specs/AOR-006-model-escalation/spec.md), [`policies/escalation.md`](../policies/escalation.md) | AOR decides forever-loop vs normal fix↔review (same signature vs different bugs); hard stop only when stuck |
 | **15** | Unattended AI Team + watchdog | [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md), [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) | Operate team without babysitting; kill hung Gradle/device waits; notify humans |
 | 10–12 | Implementor / review / fix loop | AOR-004, AOR-005 | Required under the ladder + watchdog |
 | 9 | Engine integration | live APIs | Makes 10–15 real |
 | 14 | Multi-repo orchestration | AOR-003 enhancement | After single-repo loop works |
 
-**Rule:** environment stuckness (disconnected device, hung `gradlew`) is **not** a model-escalation problem — classify `environment`, cancel, notify, `HUMAN_REQUIRED`.
+**Rule:** environment stuckness is **not** a model-escalation problem. Forever-loop is **same failure signature repeating** — not “N cycles that each fixed a different bug.”
 
 ## Next (ordered)
 
@@ -28,7 +28,7 @@ Status after M0 + marketing site + CLI handoff foundation. Herry CLI `main` revi
 
 Repo: `agent-on-rails-engine` (+ `agent-on-rails-agent-runtime`).
 
-- [ ] **AOR-006** decision function: failure class → same-tier retry / escalate tier / `HUMAN_REQUIRED`; audit log
+- [ ] **AOR-006** decision function: failure signature → loop verdict (`normal_progress` vs `forever_loop`) → retry / escalate / `HUMAN_REQUIRED`; audit log
 - [ ] **Watchdog** in runtime: wall-clock, command timeout (Gradle **and npm**), heartbeat, device/Node preflight ([`execution-watchdog.md`](../policies/execution-watchdog.md))
 - [ ] **AOR-004** structured `ExecutionResult` with `failure_class` + per-step outcomes
 - [ ] **AOR-005** reject → requeue under AOR-006 (no unbounded loop)

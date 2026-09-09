@@ -119,10 +119,10 @@ Run report must list: completed, `blocked_environment`, skipped-due-to-deps, cod
 | --- | --- | --- |
 | Schedule next role | Task state, deps | Implementor or reviewer session |
 | On pass | Review evidence | Evidence finalize → maybe more tasks → `FINAL_REVIEW` |
-| On coding fail | Feedback + attempts | Retry or escalate per AOR-006 |
+| On coding fail | Feedback + **failure signature** + history | AOR-006 verdict: `normal_progress` → continue; `forever_loop` → escalate / human |
 | On env stuck / timeout | Watchdog event | Cancel step, notify, continue independent work, record block |
 | On wave idle | Graph + blocks | Emit run report; `HUMAN_REQUIRED` and/or `FINAL_REVIEW` |
-| On max attempts | Policy | `HUMAN_REQUIRED` |
+| On forever-loop cap / absolute max | Policy | `HUMAN_REQUIRED` |
 
 ## Acceptance intent
 

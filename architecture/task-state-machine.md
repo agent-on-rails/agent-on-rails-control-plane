@@ -52,7 +52,7 @@ DONE                    HUMAN_REQUIRED
 
 ## Watchdog vs escalation
 
-- **Coding** failures follow RETRY → ESCALATE (model tier) under [`policies/escalation.md`](../policies/escalation.md) / AOR-006.
+- **Coding** failures: AOR compares **failure signatures** and verdicts `normal_progress` (different bugs — continue fix↔review) vs `forever_loop` (same stuck failure — escalate then `HUMAN_REQUIRED`). See [`policies/escalation.md`](../policies/escalation.md) / AOR-006.
 - **Environment** stuckness (hung build waiting for a disconnected device, hung **npm**/package install, missing local tooling) follows:
 
 ```

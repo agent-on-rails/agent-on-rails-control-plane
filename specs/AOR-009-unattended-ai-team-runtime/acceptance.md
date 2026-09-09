@@ -1,8 +1,8 @@
 # Acceptance — AOR-009 Unattended AI Team Runtime
 
 - [ ] Engine (or CLI driving engine) can run implementor → reviewer → fix → reviewer without a human manually chaining each step.
-- [ ] Reviewer reject requeues implementor with structured feedback under AOR-006 bounds.
-- [ ] `max_attempts` exceeded transitions to `HUMAN_REQUIRED` and stops scheduling new attempts.
+- [ ] Reviewer reject requeues implementor with structured feedback; AOR-006 loop verdict distinguishes normal multi-bug progress from forever-loop.
+- [ ] Forever-loop cap (same signature) or absolute runaway max transitions to `HUMAN_REQUIRED` and stops scheduling new attempts for that stuck path.
 - [ ] Watchdog cancels a step that exceeds configured wall-clock or command timeout (fixtures: hung command, simulated device wait, **simulated hung `npm`**).
 - [ ] Cancelled env/stuck steps are classified `environment` and do **not** increase `model_tier`.
 - [ ] On env stuck, a human-visible notification is emitted **when the stuck is detected** (not only at wave end).

@@ -91,9 +91,10 @@ Record evidence under the consuming project’s evidence path (or linked from `s
 Respect `policies/escalation.md`, `policies/cost-controls.md`, and `policies/execution-watchdog.md`:
 
 - Start at Tier 1 (fast / inexpensive)
-- Escalate only after bounded same-tier retries
-- Cap max tier and max attempts — never forever-loop
-- Escalate to human for architecture, security, destructive ops, max attempts exceeded, or **environment stuck**
+- Escalate only after bounded same-tier retries **or** when loop verdict is `forever_loop` (same failure signature)
+- Cap forever-loop strikes on the **same** bug; distinct bugs across fix↔review are `normal_progress` (AOR decides — not a blunt attempt counter)
+- Cap absolute runaway attempts and cost — never silent infinite scheduling
+- Escalate to human for architecture, security, destructive ops, forever-loop cap, absolute max, or **environment stuck**
 - Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, continue independent work when safe, emit run report under the watchdog
 
 ## Review separation

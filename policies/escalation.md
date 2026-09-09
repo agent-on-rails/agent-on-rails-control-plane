@@ -10,9 +10,11 @@ execution_policy:
   escalate_after:
     retries: 2
   max_model_tier: 3
-  max_attempts: 5
-  no_progress:
-    treat_as: escalate_or_human
+  loop_detection:
+    forever_loop_same_signature_max: 5
+    treat_distinct_bugs_as: normal_progress
+    require_structured_reject_feedback: true
+  absolute_max_attempts: 20
   environment:
     escalate_model: false
     on_timeout_or_stuck: human_required
@@ -20,7 +22,8 @@ execution_policy:
     - architecture_change
     - security_policy_change
     - destructive_operation
-    - max_attempts_exceeded
+    - forever_loop_cap_exceeded
+    - absolute_max_attempts_exceeded
     - environment_stuck
     - cost_budget_exhausted
 ```
@@ -36,23 +39,32 @@ execution_policy:
 
 | Class | Escalate model? | Typical outcome |
 | --- | --- | --- |
-| `coding` | Yes, after same-tier retries | Higher tier or human |
-| `no_progress` | Yes (or human if at cap) | Do not infinite-loop same tier blindly |
-| `environment` | **No** | Cancel step / notify / continue independent work / run report → `HUMAN_REQUIRED` if blocking (see `execution-watchdog.md`) |
+| `coding` (distinct bug / `normal_progress`) | Optional (difficulty) | Continue fix↔review — **not** forever-loop |
+| `no_progress` / forever-loop (same signature) | Yes, then human at cap | Stop stuck identical retries |
+| `environment` | **No** | Cancel / notify / continue independent / run report |
 | `policy` | No | Immediate `HUMAN_REQUIRED` |
 | `cost` | No | Pause + human / halt |
 
-## Forever-loop prohibition
+## Forever-loop vs normal fix↔review (AOR decides)
 
-- `max_attempts` is a hard stop across all tiers.
-- Same-tier retries are capped by `same_tier_retries`.
-- Blind re-runs without new reviewer feedback are prohibited.
-- Environment stuckness (e.g. Gradle waiting for a device that never connects, **npm hanging locally**) must not burn wall-clock for an hour unsupervised; see [`execution-watchdog.md`](./execution-watchdog.md). Notify, stop that path, continue independent work when safe, and emit a run report.
+Agent On Rails **must decide** the loop verdict — a raw attempt count alone is insufficient.
+
+| Situation | Verdict | Action |
+| --- | --- | --- |
+| Fix↔review cycles where each reject is a **different bug** (new failure signature) | `normal_progress` | Safe / expected; continue (respect cost + `absolute_max_attempts` only as runaway net) |
+| Same failure signature repeats (same bug won’t die), up to `forever_loop_same_signature_max` (default **5**) | `forever_loop` | Escalate tier; at cap → `HUMAN_REQUIRED` |
+| Blind re-run with no new structured feedback | Prohibited | Do not schedule |
+
+**Example:** five cycles that fixed auth null → then layout overflow → then flaky fixture → … are **not** a forever-loop. Five cycles that keep failing `AUTH_NULL_TOKEN` with no clear are.
+
+## Environment
+
+Environment stuckness (device disconnect, hung Gradle, hung **npm**) must not burn unsupervised wall-clock; see [`execution-watchdog.md`](./execution-watchdog.md). Notify, stop that path, continue independent work when safe, emit a run report. Do not climb the model ladder.
 
 ## Rules
 
-- Escalation must be deterministic given failure class and attempt count.
-- Every escalation is audited (from tier, to tier, reason, failure class, task id).
-- Reviewer failures may requeue implementer with feedback; they do not skip evidence.
+- Escalation must be deterministic given failure class, **loop verdict**, and attempt history.
+- Every verdict / escalation is audited (`failure_signature`, `verdict`, tiers, reason, task id).
+- Reviewer failures may requeue implementer with structured feedback; they do not skip evidence.
 - Cost limits in `cost-controls.md` can force earlier human intervention.
 - Spec: [`AOR-006`](../specs/AOR-006-model-escalation/spec.md).

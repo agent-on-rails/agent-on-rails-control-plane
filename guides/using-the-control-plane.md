@@ -172,7 +172,7 @@ Always require humans for architecture, security, secrets, destructive ops, and 
 
 ### Reject / send back
 
-Reviewer (or you) rejects with structured feedback → implementor retries under [`policies/escalation.md`](../policies/escalation.md) (cheap-first model tiers, bounded attempts → `HUMAN_REQUIRED`). Environment hangs (device disconnect, stuck Gradle, hung **npm**) are handled by [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) — cancel + notify, continue independent work when safe, end with a run report; do not escalate model tier.
+Reviewer (or you) rejects with structured feedback → AOR-006 decides `normal_progress` (different bug) vs `forever_loop` (same signature) under [`policies/escalation.md`](../policies/escalation.md). Environment hangs (device disconnect, stuck Gradle, hung **npm**) are handled by [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) — cancel + notify, continue independent work when safe, end with a run report; do not escalate model tier.
 
 ---
 
