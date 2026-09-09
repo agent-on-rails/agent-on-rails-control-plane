@@ -2,7 +2,7 @@
 /**
  * Live CI dashboard for Agent On Rails sibling repos.
  * Same operator pattern as suherman.net `npm run ci`: sticky TTY view of
- * local git state, GitHub Actions, and production endpoints.
+ * local git state, GitHub Actions, production endpoints, and HaloRT K8s health.
  *
  * Usage:
  *   npm run ci
@@ -24,6 +24,11 @@ const path = require("node:path");
 const { getRepos, getProductionServices } = require("./stack-config.cjs");
 const { readRepoGitStatus } = require("./git-repo-status.cjs");
 const { runChecks } = require("./check-control-plane.cjs");
+const {
+  getHalortK8sUsage,
+  formatHalortK8sUsageLines,
+  clusterBoxColor,
+} = require("./lib/halort-k8s-usage.cjs");
 
 const REPOS = getRepos();
 const useColor = process.stdout.isTTY && !process.env.NO_COLOR;
@@ -60,8 +65,11 @@ function parseArgs(argv) {
 
   AOR_CI_INTERVAL=10         idle refresh interval in seconds (default 10)
   AOR_CI_BRANCH              optional GitHub Actions branch filter
+  AOR_CI_K8S_CACHE_SEC=30    HaloRT cluster health cache (default 30)
+  HALORT_INFRA_ROOT          path to halort-infra (default ~/src/halort/halort-infra)
 
 Requires gh (optional): GitHub Actions columns stay empty until \`gh auth login\`.
+HaloRT K8s health reuses halort-infra cluster-health (kubeconfig / VPN as needed).
 `);
       process.exit(0);
     }
@@ -391,15 +399,27 @@ async function collectSnapshot({ branch, gh }) {
     }),
   );
 
-  const production = await Promise.all(
-    getProductionServices().map(async (service) => {
-      const http = await probeUrl(service.publicUrl);
-      const row = rows.find((item) => item.repo.id === service.repoId) || null;
-      return { service, http, row };
-    }),
-  );
+  const [production, cluster] = await Promise.all([
+    Promise.all(
+      getProductionServices().map(async (service) => {
+        const http = await probeUrl(service.publicUrl);
+        const row = rows.find((item) => item.repo.id === service.repoId) || null;
+        return { service, http, row };
+      }),
+    ),
+    getHalortK8sUsage({ wait: true }),
+  ]);
 
-  return { checks, rows, production, gh };
+  return { checks, rows, production, cluster, gh };
+}
+
+function clusterIssue(cluster) {
+  if (!cluster || cluster.skipped || cluster.fetching) return null;
+  if (!cluster.ok) return "unreachable";
+  const level = cluster.health?.level;
+  if (level === "degraded") return "degraded";
+  if (level === "warning") return "warning";
+  return null;
 }
 
 function summarize(snapshot) {
@@ -411,14 +431,27 @@ function summarize(snapshot) {
   );
   const active = snapshot.rows.filter((row) => isActiveRun(row.actions.run));
   const httpBad = snapshot.production.filter((item) => !item.http.ok);
-  return { dirty, failed, active, httpBad, checksOk: snapshot.checks.ok };
+  const clusterBad = clusterIssue(snapshot.cluster);
+  return { dirty, failed, active, httpBad, clusterBad, checksOk: snapshot.checks.ok };
 }
 
 function summaryColor(summary) {
-  if (summary.failed.length > 0 || !summary.checksOk || summary.httpBad.length > 0) {
+  if (
+    summary.failed.length > 0 ||
+    !summary.checksOk ||
+    summary.httpBad.length > 0 ||
+    summary.clusterBad === "degraded"
+  ) {
     return red;
   }
-  if (summary.active.length > 0 || summary.dirty.length > 0) return yellow;
+  if (
+    summary.active.length > 0 ||
+    summary.dirty.length > 0 ||
+    summary.clusterBad === "warning" ||
+    summary.clusterBad === "unreachable"
+  ) {
+    return yellow;
+  }
   return green;
 }
 
@@ -428,6 +461,7 @@ function summaryTitle(summary) {
   if (summary.failed.length) parts.push(`${summary.failed.length} failed`);
   if (summary.dirty.length) parts.push(`${summary.dirty.length} dirty`);
   if (summary.httpBad.length) parts.push(`${summary.httpBad.length} endpoint down`);
+  if (summary.clusterBad) parts.push(`K8s ${summary.clusterBad}`);
   if (!summary.checksOk) parts.push("contracts failed");
   return parts.join(" · ") || "All green";
 }
@@ -576,6 +610,14 @@ function buildDashboardLines(snapshot, { lastCheckAt }) {
   lines.push("");
   lines.push(
     ...renderBox(
+      "HaloRT Kubernetes",
+      ["", ...formatHalortK8sUsageLines(snapshot.cluster, { green, yellow, red, dim })],
+      clusterBoxColor(snapshot.cluster, { green, yellow, red, dim }),
+    ),
+  );
+  lines.push("");
+  lines.push(
+    ...renderBox(
       "Control-plane contracts",
       buildChecksLines(snapshot.checks),
       snapshot.checks.ok ? green : red,
@@ -614,7 +656,12 @@ function printLinear(snapshot) {
 
 function exitCode(snapshot) {
   const summary = summarize(snapshot);
-  if (!summary.checksOk || summary.failed.length > 0 || summary.httpBad.length > 0) {
+  if (
+    !summary.checksOk ||
+    summary.failed.length > 0 ||
+    summary.httpBad.length > 0 ||
+    summary.clusterBad === "degraded"
+  ) {
     return 1;
   }
   return 0;

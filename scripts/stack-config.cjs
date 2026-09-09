@@ -13,6 +13,12 @@ const WORKSPACE_ROOT = path.resolve(
 
 const CONTROL_PLANE_ROOT = path.resolve(__dirname, "..");
 
+/** HaloRT infra (shared K3s probe used by `npm run ci`). */
+const HALORT_INFRA_ROOT = path.resolve(
+  process.env.HALORT_INFRA_ROOT ||
+    path.join(os.homedir(), "src", "halort", "halort-infra"),
+);
+
 const GITHUB_ORG = "agent-on-rails";
 
 /**
@@ -106,6 +112,7 @@ function getProductionServices() {
 module.exports = {
   WORKSPACE_ROOT,
   CONTROL_PLANE_ROOT,
+  HALORT_INFRA_ROOT,
   GITHUB_ORG,
   REPOS,
   PRODUCTION_SERVICES,

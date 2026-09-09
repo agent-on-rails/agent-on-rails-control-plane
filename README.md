@@ -69,7 +69,7 @@ If implementation diverges from an approved spec, the spec wins until a new ADR 
 
 ## Operator dashboard
 
-Same pattern as suherman.net: a live TTY view of sibling repos, GitHub Actions, and the public site.
+Same pattern as suherman.net: a live TTY view of sibling repos, GitHub Actions, the public site, and HaloRT Kubernetes cluster health.
 
 ```bash
 npm run ci            # live dashboard (Ctrl+C to stop)
