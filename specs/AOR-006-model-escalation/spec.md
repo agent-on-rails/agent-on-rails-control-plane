@@ -1,7 +1,7 @@
 ---
 id: AOR-006
 title: Model Escalation
-status: review
+status: approved
 intent: >
   Automatically escalate difficult *coding* work to a more capable model with
   bounded retries, deterministic routing, cost limits, and auditable history.

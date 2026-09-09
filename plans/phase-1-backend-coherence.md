@@ -1,6 +1,6 @@
 # Phase 1 — Backend coherence (AOR-006 / AOR-009)
 
-**Status:** Specs in `REVIEW` — awaiting human `APPROVED` before treating sibling-repo work as production-compliant.
+**Status:** Specs **APPROVED** (2026-09-09) — PR #2 merged after Herry FINAL REVIEW PASS; Phase 1 sibling implementation may proceed as contract-compliant.
 
 **Source:** Backend review handoff (2026-09-09) against CLI / engine / runtime / control-plane `main`.
 
@@ -10,8 +10,8 @@
 
 | Artifact | Change |
 | --- | --- |
-| [AOR-006](../specs/AOR-006-model-escalation/spec.md) | Forever-loop **Option A** (ladder primary; strike max = ceiling); `status: review` |
-| [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md) | Task API MVP, engine-owned state, full RunReport, wave-level `HUMAN_REQUIRED` for env; `status: review` |
+| [AOR-006](../specs/AOR-006-model-escalation/spec.md) | Forever-loop **Option A** (ladder primary; strike max = ceiling); `status: approved` |
+| [AOR-009](../specs/AOR-009-unattended-ai-team-runtime/spec.md) | Task API MVP, engine-owned state, full RunReport, wave-level `HUMAN_REQUIRED` for env; `status: approved` |
 | [`policies/escalation.md`](../policies/escalation.md) | Aligned to Option A + env semantics |
 | [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) | Specific-first Gradle classification + RunReport fields |
 | [`schemas/evidence.schema.json`](../schemas/evidence.schema.json) | `run_report.required` matches AOR-009 full field set (empty arrays OK) |
@@ -35,11 +35,9 @@
 
 Per [`policies/human-approval.md`](../policies/human-approval.md):
 
-1. Review AOR-006 + AOR-009 + this plan.
-2. Record durable approval (GitHub review / structured comment / audit event) referencing artifact SHAs.
-3. Only then move specs `REVIEW → APPROVED` and schedule Phase 1 implementation tasks.
-
-Until approved, sibling work remains **experimental spike / prototype** relative to dogfood governance — do not mark specs `DONE` against unapproved contracts.
+1. [x] Review AOR-006 + AOR-009 + this plan (PR #2).
+2. [x] Durable approval: Herry FINAL REVIEW PASS (2026-09-09) + merge to `main` (`0de36d3`).
+3. [x] Specs moved `REVIEW → APPROVED`; Phase 1 implementation tasks may be scheduled.
 
 ## Definition of done (Phase 1 only)
 

@@ -24,16 +24,16 @@ Status after M0 + marketing site + CLI handoff foundation. Herry CLI `main` revi
 
 ## Next (ordered)
 
-### 0. Control-plane coherence — **in REVIEW** (2026-09-09)
+### 0. Control-plane coherence — **APPROVED** (2026-09-09)
 
-Plan: [`phase-1-backend-coherence.md`](./phase-1-backend-coherence.md)
+Plan: [`phase-1-backend-coherence.md`](./phase-1-backend-coherence.md) · merged via [PR #2](https://github.com/agent-on-rails/agent-on-rails-control-plane/pull/2)
 
 - [x] AOR-006 Option A forever-loop ladder (primary stop) + strike max as ceiling
 - [x] AOR-009 task API + engine-owned state + full RunReport + wave-level env `HUMAN_REQUIRED`
 - [x] Watchdog policy: Gradle specific-first classification
 - [x] Evidence schema RunReport fields expanded
-- [ ] **Human** `REVIEW → APPROVED` on AOR-006 and AOR-009
-- [ ] Only then treat sibling Phase 1 implementation as contract-compliant (not spike)
+- [x] **Human** `REVIEW → APPROVED` on AOR-006 and AOR-009 (Herry PASS + merge)
+- [x] Sibling Phase 1 implementation may proceed as contract-compliant
 
 ### 1. Engine spine — escalate + watchdog first
 
@@ -51,7 +51,7 @@ Repos:
 - [ ] **AOR-005** reject → requeue under AOR-006; reviewer ends with role report + finding signatures
 - [ ] **AOR-009** manager loop: implement → review → fix → escalate; on env stuck → notify + stop + **continue independent** + **run report**; every hop closes with a role report
 - [ ] Wire CLI `aor run` / `watch` + GitHub labels to live engine status
-- [ ] Human `APPROVED` on AOR-006 / AOR-009 before treating runtime as production-ready
+- [x] Human `APPROVED` on AOR-006 / AOR-009 (2026-09-09); Phase 1 implementation may proceed
 
 ### 2. Terminal application — `agent-on-rails-cli` (Python)
 

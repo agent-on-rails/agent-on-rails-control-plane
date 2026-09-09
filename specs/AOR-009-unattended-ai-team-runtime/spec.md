@@ -1,7 +1,7 @@
 ---
 id: AOR-009
 title: Unattended AI Team Runtime
-status: review
+status: approved
 intent: >
   Operate the AI Team (implementor → reviewer → fix → escalate) without a human
   babysitting the terminal, with hard wall-clock/watchdog bounds so environment
