@@ -25,6 +25,7 @@
         "review",
         "failed",
         "escalated",
+        "blocked",
         "human_required",
         "done"
       ]

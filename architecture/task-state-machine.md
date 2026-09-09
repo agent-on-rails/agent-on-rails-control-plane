@@ -47,7 +47,27 @@ DONE                    HUMAN_REQUIRED
 | `DONE` | Human accepted; evidence recorded; contract satisfied |
 | `RETRY` | Transient failure; same or next tier will retry |
 | `ESCALATE` | Model tier, specialist, or human escalation in progress |
-| `HUMAN_REQUIRED` | Policy gate or max attempts; blocked on human |
+| `HUMAN_REQUIRED` | Policy gate, max attempts, or **environment stuck** (watchdog); blocked on human |
+| `BLOCKED` (task) | Task/step waiting on environment capability (npm, device, etc.); siblings may continue |
+
+## Watchdog vs escalation
+
+- **Coding** failures follow RETRY → ESCALATE (model tier) under [`policies/escalation.md`](../policies/escalation.md) / AOR-006.
+- **Environment** stuckness (hung build waiting for a disconnected device, hung **npm**/package install, missing local tooling) follows:
+
+```
+timeout / no heartbeat
+        │
+        ▼
+  STOP stuck step + notify human
+        │
+        ├─► continue independent ready tasks (AOR-009)
+        │
+        └─► wave end → RUN REPORT
+              blocking gaps → HUMAN_REQUIRED
+```
+
+Do **not** climb the model ladder for environment failures. See [`policies/execution-watchdog.md`](../policies/execution-watchdog.md) and AOR-009.
 
 ## Task graph example
 

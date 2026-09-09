@@ -88,12 +88,13 @@ Record evidence under the consuming project’s evidence path (or linked from `s
 
 ## Model routing defaults
 
-Respect `policies/escalation.md` and `policies/cost-controls.md`:
+Respect `policies/escalation.md`, `policies/cost-controls.md`, and `policies/execution-watchdog.md`:
 
 - Start at Tier 1 (fast / inexpensive)
-- Escalate only after bounded retries
-- Cap max tier and max attempts
-- Escalate to human for architecture, security, destructive ops, or max attempts exceeded
+- Escalate only after bounded same-tier retries
+- Cap max tier and max attempts — never forever-loop
+- Escalate to human for architecture, security, destructive ops, max attempts exceeded, or **environment stuck**
+- Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, continue independent work when safe, emit run report under the watchdog
 
 ## Review separation
 

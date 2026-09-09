@@ -10,9 +10,11 @@
 8. **Bounded context** — Agents receive contracts and task scope, not vague prompts.
 9. **Provider neutrality + headless agents** — Adapters over inventing a proprietary coding agent for MVP.
 10. **Cheap first** — Start with inexpensive models; escalate on failure within bounds.
-11. **No self-approval** — Implementers do not mark their own work done.
-12. **Evidence over assertion** — “Done” requires artifacts that satisfy acceptance criteria.
-13. **Human final review** — Agents prepare; humans own final review / merge at the gate.
-14. **CLI first** — Terminal/Python operators for MVP; mobile monitoring later (not Telegram/WhatsApp as primary UI).
-15. **Auditability** — Escalation history, reviews, and evidence are durable and queryable.
-16. **Dogfood with real products** — Prefer Lakuyo and Agent On Rails itself over toy demos.
+11. **No forever loops** — Cap same-tier retries and max attempts; escalate to human when bounds are hit.
+12. **Fail fast on environment** — Hung device/network/build/**npm** waits are watchdog failures: notify, stop that path, continue independent work when safe, report gaps — not reasons to burn a smarter model or an unsupervised hour.
+13. **No self-approval** — Implementers do not mark their own work done.
+14. **Evidence over assertion** — “Done” requires artifacts that satisfy acceptance criteria.
+15. **Human final review** — Agents prepare; humans own final review / merge at the gate.
+16. **CLI first** — Terminal/Python operators for MVP; mobile monitoring later (not Telegram/WhatsApp as primary UI).
+17. **Auditability** — Escalation history, reviews, and evidence are durable and queryable.
+18. **Dogfood with real products** — Prefer Lakuyo and Agent On Rails itself over toy demos.
