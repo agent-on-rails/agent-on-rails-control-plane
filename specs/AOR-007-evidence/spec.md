@@ -40,10 +40,12 @@ evidence/
 ## Behavior
 
 1. Collect implementation, tests, review, optional security/deployment objects.
-2. Validate against `schemas/evidence.schema.json`.
-3. Attach/link evidence to the governing spec and GitHub Issue.
-4. Block `VERIFYING → DONE` without required artifacts.
-5. Support Lakuyo and AOR dogfood evidence paths.
+2. Attach orchestration **run report** when produced by AOR-009 (completed / blocked_environment / human_actions_needed).
+3. Attach per-assignment **role reports** (implementor / fixer / reviewer) per [`policies/role-reports.md`](../../policies/role-reports.md).
+4. Validate against `schemas/evidence.schema.json` (role reports SHOULD also validate against `schemas/role-report.schema.json`).
+5. Attach/link evidence to the governing spec and GitHub Issue.
+6. Block `VERIFYING → DONE` without required artifacts; blocked env checks must not be recorded as passing tests.
+7. Support Lakuyo and AOR dogfood evidence paths.
 
 ## Out of scope
 

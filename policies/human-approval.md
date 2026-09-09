@@ -8,7 +8,7 @@
 - Secrets policy changes
 - Destructive operations (data delete, irreversible infra)
 - Cost budget increases beyond configured thresholds
-- Clearing `HUMAN_REQUIRED` after max attempts
+- Clearing `HUMAN_REQUIRED` after max attempts **or environment stuck** (reconnect device, fix sandbox, etc.)
 - **Final review / merge** (`FINAL_REVIEW → DONE`) — agents prepare; humans merge
 
 ## May be automated (policy permitting)

@@ -22,9 +22,9 @@ product/        Vision, proposition, principles, personas, roadmap
 specs/          Machine-governable contracts (AOR-NNN)
 architecture/   System design, planes, state machines, security
 adr/            Architecture Decision Records
-policies/       Permissions, approval, escalation, secrets, cost
+policies/       Permissions, approval, escalation, watchdog, role reports, secrets, cost
 plans/          MVP, milestones, backlog
-schemas/        JSON schemas for project, spec, task, evidence
+schemas/        JSON schemas for project, spec, task, evidence, role report
 guides/         How-to documentation (start with using-the-control-plane.md)
 brand/          Logo mark (transparent)
 examples/       Dogfood / reference projects (e.g. Lakuyo)

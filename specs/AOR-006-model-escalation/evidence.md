@@ -6,7 +6,7 @@
 | --- | --- |
 | `implementation-pr` | Engine + runtime PRs |
 | `test-results` | Unit + integration |
-| `execution-log` | Escalation history for a fixture failure ladder |
+| `execution-log` | Escalation + **loop verdict** history: distinct-bug progress ladder and same-signature forever-loop → human; plus env-stuck path that does not climb tiers |
 
 ## Example shape
 

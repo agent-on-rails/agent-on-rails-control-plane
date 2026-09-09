@@ -88,12 +88,15 @@ Record evidence under the consuming project’s evidence path (or linked from `s
 
 ## Model routing defaults
 
-Respect `policies/escalation.md` and `policies/cost-controls.md`:
+Respect `policies/escalation.md`, `policies/cost-controls.md`, and `policies/execution-watchdog.md`:
 
 - Start at Tier 1 (fast / inexpensive)
-- Escalate only after bounded retries
-- Cap max tier and max attempts
-- Escalate to human for architecture, security, destructive ops, or max attempts exceeded
+- Escalate only after bounded same-tier retries **or** when loop verdict is `forever_loop` (same failure signature)
+- Cap forever-loop strikes on the **same** bug; distinct bugs across fix↔review are `normal_progress` (AOR decides — not a blunt attempt counter)
+- Cap absolute runaway attempts and cost — never silent infinite scheduling
+- Escalate to human for architecture, security, destructive ops, forever-loop cap, absolute max, or **environment stuck**
+- Do not escalate model tier for hung builds / hung npm / disconnected devices; cancel + notify, continue independent work when safe, emit run report under the watchdog
+- Every implementor / fixer / reviewer assignment must end with a standardized **role report** ([`policies/role-reports.md`](./policies/role-reports.md) / [`schemas/role-report.schema.json`](./schemas/role-report.schema.json))
 
 ## Review separation
 
