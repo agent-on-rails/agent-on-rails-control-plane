@@ -26,14 +26,17 @@ Status after M0 + marketing site + CLI handoff foundation. Herry CLI `main` revi
 
 ### 1. Engine spine — escalate + watchdog first
 
-Repo: `agent-on-rails-engine` (+ `agent-on-rails-agent-runtime`).
+Repos:
+- [`agent-on-rails-engine`](https://github.com/agent-on-rails/agent-on-rails-engine) (scaffold on `main`, 2026-09-09)
+- [`agent-on-rails-agent-runtime`](https://github.com/agent-on-rails/agent-on-rails-agent-runtime) (scaffold on `main`, 2026-09-09)
 
-- [ ] **AOR-006** decision function: failure signature → loop verdict (`normal_progress` vs `forever_loop`) → retry / escalate / `HUMAN_REQUIRED`; audit log
-- [ ] **Watchdog** in runtime: wall-clock, command timeout (Gradle **and npm**), heartbeat, device/Node preflight ([`execution-watchdog.md`](../policies/execution-watchdog.md))
+- [x] **AOR-006** decision function (library + `/v1/escalation/decide`): failure signature → loop verdict (`normal_progress` vs `forever_loop`) → retry / escalate / `HUMAN_REQUIRED`; unit tests
+- [x] **Watchdog** library: wall-clock, command timeout (Gradle **and npm**), heartbeat, preflight helpers, run-report structure ([`execution-watchdog.md`](../policies/execution-watchdog.md))
 - [ ] **AOR-004** structured `ExecutionResult` + mandatory **role report** (`schemas/role-report.schema.json`)
 - [ ] **AOR-005** reject → requeue under AOR-006; reviewer ends with role report + finding signatures
 - [ ] **AOR-009** manager loop: implement → review → fix → escalate; on env stuck → notify + stop + **continue independent** + **run report**; every hop closes with a role report
 - [ ] Wire CLI `aor run` / `watch` + GitHub labels to live engine status
+- [ ] Human `APPROVED` on AOR-006 / AOR-009 before treating runtime as production-ready
 
 ### 2. Terminal application — `agent-on-rails-cli` (Python)
 
