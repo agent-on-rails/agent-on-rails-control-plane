@@ -59,7 +59,8 @@ Thin **onboarding only** (ADR-008 / AOR-008): install `aor` + `aor init`, then h
 - [x] Prerequisites + CLI install steps
 - [x] Project bootstrap UI (`aor init`)
 - [x] Link from website docs / download page
-- [ ] Signed release artifacts (later)
+- [x] Signed macOS release + Sparkle appcast (notarized Developer ID)
+- [ ] Signed Windows MSI (needs `WINDOWS_CERTIFICATE` CI secret) + latest.json platform entry
 - [x] Create GitHub repo `agent-on-rails/agent-on-rails-desktop` + first push
 
 ## Later (after MVP loop works)
