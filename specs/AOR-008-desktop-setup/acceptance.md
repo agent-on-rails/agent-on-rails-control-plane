@@ -8,5 +8,7 @@
 - [ ] Gather shows the outline and requires human confirm before writing SurveyDesk-shaped `specs/` (product, requirements, domain, api, adr, acceptance, regeneration). Confirm stays disabled until extract succeeds. SurveyDesk-like NL produces the SurveyDesk reference pack (same files as the exemplar `specs/`), not sentence-fragment requirement files.
 - [ ] Wizard does not store LLM API keys in the app bundle, preferences, or source.
 - [ ] After success, the user is pointed to the walkthrough / `aor` TUI—not a parallel desktop workflow.
+- [ ] macOS release DMG is a drag-and-drop disk image (app + Applications alias), signed and notarized.
+- [ ] Packaged macOS app exposes Sparkle **Check for Updates…** (app menu and in-window) against `appcast.xml`; background checks remain enabled.
 - [ ] No production app logic is implemented inside the control-plane repo.
 - [ ] Unit tests cover command detection, init argument construction, and gather outline-only / apply args; integration test covers dry-run or fixture init where feasible.

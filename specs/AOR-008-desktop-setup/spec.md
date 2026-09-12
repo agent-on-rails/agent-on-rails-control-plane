@@ -39,6 +39,8 @@ gather → open next steps. Day-to-day work stays in `aor` TUI/CLI (ADR-007, ADR
 6. Done step links to walkthrough / docs and offers to open the project folder or copy `aor` launch hint.
 7. Wizard never writes production application code into a control-plane tree (AOR-001).
 8. Wizard never marks specs APPROVED or tasks DONE.
+9. macOS installer is a **drag-and-drop DMG** (app icon + Applications drop-link), same layout as Nucleus. Operators drag **Agent On Rails Setup** into Applications; the DMG is Developer ID signed and notarized.
+10. macOS auto-update uses **Sparkle** (`appcast.xml`). The app MUST offer **Check for Updates…** (application menu and in-window action) in addition to background checks. Sparkle is unavailable in `tauri dev`; the packaged Applications copy is the supported updater path.
 
 ## Out of scope
 

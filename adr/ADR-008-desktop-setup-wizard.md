@@ -17,6 +17,7 @@ We need a **thin onboarding surface** so someone can install the CLI and bootstr
 3. Stack: **Tauri 2** (native shells) + small web UI. The wizard shells out to / embeds the same install path as `agent-on-rails-cli` (`pipx` preferred; documented fallback).
 4. This does **not** replace CLI/TUI as the operator loop (spec → approve → plan → run → review). Full desktop monitoring remains later per ADR-007 / `plans/next.md`.
 5. Linux is optional later; not required for the first dogfood cut.
+6. macOS distribution is a Nucleus-style **drag-and-drop DMG**; in-app updates use **Sparkle** (`Check for Updates…` plus background checks). Windows remains MSI/NSIS + Tauri updater.
 
 ## Consequences
 
