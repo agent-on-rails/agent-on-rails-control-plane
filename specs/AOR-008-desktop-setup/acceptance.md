@@ -2,7 +2,7 @@
 
 - [ ] macOS and Windows builds of the setup wizard exist in `agent-on-rails-desktop` (dev-runnable at minimum; release packaging documented).
 - [ ] Wizard detects missing Python 3.11+ and shows a clear next action (does not silently fail).
-- [ ] Wizard can install or upgrade `aor` using the CLI repo’s preferred install path (pipx, with documented fallback).
+- [ ] Wizard can install or upgrade `aor` using the CLI repo’s preferred install path (pipx, with documented fallback). If pipx fails recreating its shared venv (common with Homebrew `python@3.14` / `ensurepip`), the wizard MUST fall back to `python -m pip install --user` rather than hard-failing.
 - [ ] Wizard can run project bootstrap equivalent to `aor init <path> --name <name>` when the operator continues from New project to Gather, and report success or validation issues without a separate Init button.
 - [ ] Gather specs step invokes `aor gather` (outline-only, then apply on confirm). The footer forward action is Confirm & write drafts; Skip gather is not offered.
 - [ ] Gather shows the outline and requires human confirm before writing SurveyDesk-shaped `specs/` (product, requirements, domain, api, adr, acceptance, regeneration). Confirm stays disabled until extract succeeds. SurveyDesk-like NL produces the SurveyDesk reference pack (same files as the exemplar `specs/`), not sentence-fragment requirement files.
