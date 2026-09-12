@@ -56,6 +56,10 @@ Do **not** start implementation in sibling repositories until:
 
 Flow: intent → proposition → PRD → architecture → ADRs → specs → acceptance → plan → tasks → agents.
 
+Optional drafting shortcut (AOR-010): `aor gather run` turns natural-language requirements into a
+SurveyDesk-shaped `specs/` pack after human confirm. Drafts still require APPROVED before agents implement.
+
+
 ## Spec and task contracts
 
 - Specs live under `specs/AOR-NNN-slug/` with `spec.md`, `acceptance.md`, and `evidence.md`.

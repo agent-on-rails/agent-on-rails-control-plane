@@ -10,10 +10,11 @@ Unordered candidates after MVP. Promote into specs before implementation.
 - [ ] Public documentation site
 - [ ] Desktop monitoring (after Android)
 - [ ] Org-level policy packs / templates
+- [x] Natural-language → SurveyDesk-shaped specs (`aor gather`, AOR-010)
 
 ## Platform
 
-- [ ] `agent-on-rails-cli` terminal app — **in progress** (scaffold + AOR-001 init)
+- [x] `agent-on-rails-cli` terminal app — **in progress** (scaffold + AOR-001 init + AOR-010 gather)
 - [ ] `agent-on-rails-android` monitoring (KMP) — **scaffold** (Herry)
 - [ ] `agent-on-rails-engine` / `github` / `agent-runtime` / `infrastructure`
 - [ ] `agent-on-rails-sdk` for external adapters
