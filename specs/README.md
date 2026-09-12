@@ -11,5 +11,6 @@
 | AOR-007 | Evidence | draft | [AOR-007-evidence](./AOR-007-evidence/spec.md) |
 | AOR-008 | Desktop Setup Wizard | draft | [AOR-008-desktop-setup](./AOR-008-desktop-setup/spec.md) |
 | AOR-009 | Unattended AI Team Runtime | draft | [AOR-009-unattended-ai-team-runtime](./AOR-009-unattended-ai-team-runtime/spec.md) |
+| AOR-010 | Natural language spec gathering | approved | [AOR-010-natural-spec-gathering](./AOR-010-natural-spec-gathering/spec.md) |
 
 All specs start as `draft` until human review moves them through the [lifecycle](../architecture/task-state-machine.md).

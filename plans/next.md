@@ -103,6 +103,7 @@ Thin **onboarding only** (ADR-008 / AOR-008): install `aor` + `aor init`, then h
 - [x] Repo scaffold (Tauri 2, macOS + Windows targets)
 - [x] Prerequisites + CLI install steps
 - [x] Project bootstrap UI (`aor init`)
+- [x] Gather specs step (`aor gather` → SurveyDesk reference pack for SurveyDesk NL, confirm before write)
 - [x] Link from website docs / download page
 - [x] Signed macOS release + Sparkle appcast (notarized Developer ID)
 - [ ] Signed Windows MSI (needs `WINDOWS_CERTIFICATE` CI secret) + latest.json platform entry

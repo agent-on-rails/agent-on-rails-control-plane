@@ -57,13 +57,22 @@ full specs tree that mirrors that layout.
 7. Generated artifacts are **drafts**. Specs are not `APPROVED` until a human runs
    the normal approval path. Gathering automates drafting only (`policies/human-approval.md`).
 8. Offline/stub mode MUST work for tests when no API key is set (deterministic heuristic extract).
+9. When the natural-language input describes **SurveyDesk** (product name SurveyDesk,
+   or FormSpec + native iOS/Android operators + anonymous/Next.js web), gather MUST
+   write the **SurveyDesk reference pack** shipped in the CLI (same `specs/` files as
+   the SurveyDesk exemplar: SD-001…SD-012, domain including `form-spec`, OpenAPI
+   `/v1/surveys`, ADR-001…ADR-009, acceptance features, regeneration P1–P6 and
+   contracts). It MUST NOT sentence-split the pasted paragraphs into requirement
+   files. Overlay `specs/regeneration/source-requirements.md` with the captured NL.
+   `--force` replaces a previous stub `specs/` tree so leftover sentence-slug files
+   are removed. Other products still get generated drafts in the same *layout*.
 
 ## Out of scope
 
 - Auto-approving specs or skipping human confirm
 - Hard-coding a single vendor model monopoly (DIV is a default endpoint, not the only one)
 - Generating application code (`apps/`) during gather
-- Desktop / Android gather UX (CLI-first; TUI may follow)
+- Full desktop / Android gather console as a parallel operator loop (CLI remains primary; TUI may follow). A thin confirm-before-write step in the AOR-008 setup wizard MAY shell out to the same `aor gather` CLI (no keys stored in the app).
 
 ## Reference
 
