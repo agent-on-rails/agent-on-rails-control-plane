@@ -8,6 +8,7 @@ Templates are **prompt + artifact contracts**, not provider lock-in. Runtime loa
 | --- | --- |
 | [`generic-web`](./generic-web.md) | Default web product; stack-agnostic architect |
 | [`cloudflare-web-payments`](./cloudflare-web-payments.md) | Herry dogfood: Workers/Pages-style deploy + Midtrans-class payments |
+| [`chatbot-rag`](./chatbot-rag.md) | Grounded knowledge chatbot + training/eval pack (see `examples/chatbot-training/`) |
 
 ## Shared stage contract
 
