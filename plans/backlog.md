@@ -11,6 +11,7 @@ Unordered candidates after MVP. Promote into specs before implementation.
 - [ ] Desktop monitoring (after Android)
 - [ ] Org-level policy packs / templates
 - [x] Natural-language → SurveyDesk-shaped specs (`aor gather`, AOR-010)
+- [ ] Discovery AI Team grill (`aor grill`, AOR-011 / ADR-009) — staged PO/PM → Architect → Planner
 
 ## Platform
 

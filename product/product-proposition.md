@@ -14,9 +14,9 @@ Agent On Rails is a **docs-first, spec-driven control plane for AI software deli
 
 ## Default user journey (MVP intent)
 
-1. Open the product (CLI first) and grill/produce PRD + docs.
-2. Emit a control-plane repo ready to push to GitHub (docs + specs included).
-3. Configure AI Team: implementor/fixer + reviewer (default model/effort + higher model after N failures).
+1. Open the product (CLI first) and **grill** PRD + architecture + docs via the Discovery AI Team (PO ↔ PM → Architect → Implementation Planner; [ADR-009](../adr/ADR-009-discovery-ai-team.md) / [AOR-011](../specs/AOR-011-discovery-ai-team/spec.md)) — or use fast-path `aor gather` ([AOR-010](../specs/AOR-010-natural-spec-gathering/spec.md)) when a single-shot extract is enough.
+2. Emit a control-plane repo ready to push to GitHub (docs + specs included); human approves specs.
+3. Configure delivery AI Team: implementor/fixer + reviewer (default model/effort + higher model after N failures). Prefer faster models for implementors and stronger models for architects/reviewers.
 4. Implement/test → independent review → fix loop until pass.
 5. Hand off to the human for **Final Review** and PR/Merge.
 

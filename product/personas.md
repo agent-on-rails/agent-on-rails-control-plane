@@ -2,11 +2,11 @@
 
 ## Product owner
 
-Wants ideas turned into durable intent, PRDs, and approved specs. Cares about roadmap clarity and human approval checkpoints. Does not want agents inventing product scope.
+Wants ideas turned into durable intent, PRDs, and approved specs. Cares about roadmap clarity and human approval checkpoints. Does not want agents inventing product scope. May answer Discovery Team questions directly or seed a PO persona for `aor grill` ([AOR-011](../specs/AOR-011-discovery-ai-team/spec.md)).
 
 ## Tech lead / architect
 
-Owns ADRs, repository boundaries, and security posture. Needs agents to respect architecture and escalate structural changes. Reviews high-risk diffs and policy exceptions.
+Owns ADRs, repository boundaries, and security posture. Needs agents to respect architecture and escalate structural changes. Reviews high-risk diffs and policy exceptions. May select architect personas (e.g. Cloudflare + payments) during discovery.
 
 ## Implementing engineer
 

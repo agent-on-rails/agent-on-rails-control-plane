@@ -57,7 +57,7 @@ If implementation diverges from an approved spec, the spec wins until a new ADR 
 
 **Mandatory for all Agent On Rails projects:** a control-plane repository in this shape (docs + specs together). See [ADR-006](./adr/ADR-006-control-plane-mandatory.md).
 
-**AI Team** (Manager / Implementor / Reviewer / specialists) is a first-class concept — [ADR-005](./adr/ADR-005-ai-team-first-class.md).
+**AI Team** is first-class: Discovery (ADR-009 / AOR-011) then delivery Manager / Implementor / Reviewer / specialists ([ADR-005](./adr/ADR-005-ai-team-first-class.md)).
 
 ## Getting started
 

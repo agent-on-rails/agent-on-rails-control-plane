@@ -5,7 +5,7 @@
 3. **Specs are contracts** — Approved specs bind planners, agents, and reviewers.
 4. **Control plane is mandatory** — No unbounded agent execution without an approved control-plane contract.
 5. **One authority repo** — Docs + SDD specs live together in the control plane for consumer projects.
-6. **AI Team over lone agents** — Define Manager / Implementor / Reviewer (+ specialists); operate the team until the contract is satisfied.
+6. **AI Team over lone agents** — Define Discovery (when grilling) and delivery Manager / Implementor / Reviewer (+ specialists); operate the team until the contract is satisfied.
 7. **Separation of planes** — Authority, control, and execution stay distinct.
 8. **Bounded context** — Agents receive contracts and task scope, not vague prompts.
 9. **Provider neutrality + headless agents** — Adapters over inventing a proprietary coding agent for MVP.

@@ -45,7 +45,8 @@ flowchart TB
 
 ```mermaid
 flowchart TD
-  I[Idea] --> D[Product docs]
+  I[Idea / brief] --> DISC[Discovery AI Team<br/>or aor gather]
+  DISC --> D[Product docs]
   D --> P[PRD]
   P --> A[Architecture / ADRs]
   A --> S[Specs]
@@ -53,8 +54,10 @@ flowchart TD
   AC --> H[Human approval]
   H --> PL[Implementation plan]
   PL --> TG[Task graph]
-  TG --> AG[AI Team]
+  TG --> AG[Delivery AI Team]
 ```
+
+Discovery stages (AOR-011): PO ↔ PM → Architect → Implementation Planner, with human gates between artifacts.
 
 ## Model escalation
 

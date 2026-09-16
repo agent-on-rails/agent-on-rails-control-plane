@@ -61,14 +61,14 @@ Control plane is **mandatory** ([ADR-006](../adr/ADR-006-control-plane-mandatory
 ### Recommended bootstrap flow
 
 1. **Create** a control-plane repository (CLI / `gh` will automate this later; today you can fork this structure).  
-2. **Author product intent** in `product/` (vision → proposition → principles).  
+2. **Author product intent** in `product/` (vision → proposition → principles) — optionally via Discovery AI Team (`aor grill`, [AOR-011](../specs/AOR-011-discovery-ai-team/spec.md) / [ADR-009](../adr/ADR-009-discovery-ai-team.md)) or fast-path `aor gather` ([AOR-010](../specs/AOR-010-natural-spec-gathering/spec.md)).  
 3. **Capture binding decisions** as ADRs under `adr/`.  
 4. **Write specs** under `specs/<ID>-<slug>/` with:
    - `spec.md` (frontmatter + narrative)
    - `acceptance.md` (checklist)
    - `evidence.md` (what proves done)
 5. **Human-approve** specs (`REVIEW → APPROVED`) per [`policies/human-approval.md`](../policies/human-approval.md).  
-6. Only then allow the engine to plan tasks and run agents.
+6. Only then allow the engine to plan tasks and run the **delivery** AI Team.
 
 ### Minimum folder contract for a consumer project
 
@@ -179,6 +179,12 @@ Reviewer (or you) rejects with structured feedback → AOR-006 decides `normal_p
 ---
 
 ## 8. Day-to-day: agents (AI Team)
+
+### Discovery (optional, before APPROVED specs)
+
+Roles ([ADR-009](../adr/ADR-009-discovery-ai-team.md)): Product Owner, Product Manager, Solution Architect, Implementation Planner — staged with human gates. Templates under [`templates/discovery/`](../templates/discovery/).
+
+### Delivery (after APPROVED / READY)
 
 Roles are first-class ([ADR-005](../adr/ADR-005-ai-team-first-class.md)):
 

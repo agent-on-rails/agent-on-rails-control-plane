@@ -67,6 +67,10 @@ full specs tree that mirrors that layout.
    `--force` replaces a previous stub `specs/` tree so leftover sentence-slug files
    are removed. Other products still get generated drafts in the same *layout*.
 
+## Relationship to AOR-011
+
+[AOR-011](../AOR-011-discovery-ai-team/spec.md) is the richer **multi-agent** discovery path (PO ↔ PM → Architect → Implementation Planner). Gather remains the fast single-shot path; both share confirm-before-write and draft-not-approved semantics, and SHOULD share the same pack writer / SurveyDesk layout.
+
 ## Out of scope
 
 - Auto-approving specs or skipping human confirm

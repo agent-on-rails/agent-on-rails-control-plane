@@ -34,6 +34,28 @@ Agent On Rails is organized as three planes plus GitHub as the delivery surface.
 
 ## AI Team (control-plane concept)
 
+### Discovery (before coding)
+
+```
+BRIEF / HUMAN
+     │
+     ▼
+  PO ↔ PM  →  PRD  →  (human gate)
+     │
+     ▼
+ Architect  →  ARCHITECTURE / ADRs  →  (human gate)
+     │
+     ▼
+ Implementation Planner  →  control-plane draft pack  →  (human confirm write)
+     │
+     ▼
+ HUMAN APPROVES SPECS
+```
+
+See [ADR-009](../adr/ADR-009-discovery-ai-team.md) / [AOR-011](../specs/AOR-011-discovery-ai-team/spec.md). Fast path: [AOR-010](../specs/AOR-010-natural-spec-gathering/spec.md) `aor gather`.
+
+### Delivery (after approved contract)
+
 ```
 HUMAN / PRODUCT OWNER
         │
@@ -77,7 +99,7 @@ agent-on-rails/
 
 ## End-to-end flow (compressed)
 
-Idea → product docs → PRD → architecture/ADRs → specs → acceptance → human approval → plan → task graph → model router → agent → code/test → PR → review agent → merge → deploy → validation → evidence → spec done → next eligible task.
+Idea → Discovery AI Team (or `aor gather`) → product docs → PRD → architecture/ADRs → specs → acceptance → human approval → plan → task graph → delivery AI Team → code/test → PR → review agent → merge → deploy → validation → evidence → spec done → next eligible task.
 
 ## Key mechanisms
 

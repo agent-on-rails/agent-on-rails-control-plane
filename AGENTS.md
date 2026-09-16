@@ -10,7 +10,7 @@ You are operating inside the **authority plane**. This repository defines *what*
 
 - **Control plane is mandatory** — no Agent On Rails execution without an approved contract in a control-plane repo ([ADR-006](./adr/ADR-006-control-plane-mandatory.md)).
 - **Docs live in the control plane** for consumer projects — do not require a separate docs repo.
-- **AI Team is first-class** — Manager, Implementor, Reviewer (+ optional specialists), then human final review ([ADR-005](./adr/ADR-005-ai-team-first-class.md)).
+- **AI Team is first-class** — Discovery (PO / PM / Architect / Planner) then delivery Manager, Implementor, Reviewer (+ optional specialists), then human final review ([ADR-005](./adr/ADR-005-ai-team-first-class.md), [ADR-009](./adr/ADR-009-discovery-ai-team.md)).
 - **Headless external agents** — do not invent a proprietary coding agent for MVP ([ADR-007](./adr/ADR-007-python-headless-cli-first.md)).
 - **Engine/CLI = Python (FastAPI where applicable)**; CLI-first operator UX.
 
@@ -56,8 +56,14 @@ Do **not** start implementation in sibling repositories until:
 
 Flow: intent → proposition → PRD → architecture → ADRs → specs → acceptance → plan → tasks → agents.
 
-Optional drafting shortcut (AOR-010): `aor gather run` turns natural-language requirements into a
-SurveyDesk-shaped `specs/` pack after human confirm. Drafts still require APPROVED before agents implement.
+Optional drafting paths:
+
+- Fast path (AOR-010): `aor gather` turns natural-language requirements into a
+  SurveyDesk-shaped `specs/` pack after human confirm.
+- Discovery Team (AOR-011 / ADR-009): staged PO ↔ PM → Architect → Implementation
+  Planner (`aor grill`) with human gates between PRD, architecture, and pack write.
+
+Drafts still require APPROVED before agents implement.
 
 
 ## Spec and task contracts

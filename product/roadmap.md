@@ -19,6 +19,7 @@ See [`plans/next.md`](../plans/next.md).
 
 ## Next (after MVP loop)
 
+- Discovery AI Team CLI (`aor grill`, AOR-011) promoted from draft once human-approved
 - Web console (`agent-on-rails-console`)
 - Provider adapter SDK (`agent-on-rails-sdk`)
 - Stronger multi-repo task graphs
