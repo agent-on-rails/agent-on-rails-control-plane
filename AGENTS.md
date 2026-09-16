@@ -130,3 +130,5 @@ Canonical labels: `aor:spec`, `aor:ready`, `aor:running`, `aor:review`, `aor:fai
 ## How to use this control plane
 
 Step-by-step guide for humans and agents: [`guides/using-the-control-plane.md`](./guides/using-the-control-plane.md).
+
+Chatbot requirements → specs + training/eval pack: [`guides/chatbot-training-orchestration.md`](./guides/chatbot-training-orchestration.md).

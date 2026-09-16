@@ -250,6 +250,7 @@ This org dogfoods AOR:
 2. Implement in sibling MVP repos per the spec’s `implementation.repositories`.  
 3. Attach evidence back to the governing `AOR-NNN`.  
 4. External dogfood: [examples/lakuyo](../examples/lakuyo/).
+5. Chatbot requirements → control-plane + training/eval pack: [guides/chatbot-training-orchestration.md](./chatbot-training-orchestration.md) ([examples/chatbot-training](../examples/chatbot-training/)).
 
 MVP scope: [`plans/MVP.md`](../plans/MVP.md).
 
@@ -286,3 +287,4 @@ npm run ci
 | Contracts | [`specs/`](../specs/) |
 | Schemas | [`schemas/`](../schemas/) |
 | Brand assets | [`brand/`](../brand/) |
+| Chatbot training orchestration | [`guides/chatbot-training-orchestration.md`](./chatbot-training-orchestration.md) |

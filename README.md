@@ -25,9 +25,10 @@ adr/            Architecture Decision Records
 policies/       Permissions, approval, escalation, watchdog, role reports, secrets, cost
 plans/          MVP, milestones, backlog
 schemas/        JSON schemas for project, spec, task, evidence, role report
-guides/         How-to documentation (start with using-the-control-plane.md)
+guides/         How-to documentation (start with using-the-control-plane.md;
+                chatbot training: chatbot-training-orchestration.md)
 brand/          Logo mark (transparent)
-examples/       Dogfood / reference projects (e.g. Lakuyo)
+examples/       Dogfood / reference projects (Lakuyo, chatbot-training)
 ```
 
 ## Sibling repositories (MVP)
@@ -63,9 +64,10 @@ If implementation diverges from an approved spec, the spec wins until a new ADR 
 
 1. Read [`AGENTS.md`](./AGENTS.md) before any change.
 2. Follow **[guides/using-the-control-plane.md](./guides/using-the-control-plane.md)** — detailed how-to for humans and agents.
-3. Read [`product/vision.md`](./product/vision.md) and [`product/principles.md`](./product/principles.md).
-4. Review active specs under [`specs/`](./specs/).
-5. Follow [`plans/MVP.md`](./plans/MVP.md) for the first milestone.
+3. For chatbot requirements → specs + training/eval pack, see **[guides/chatbot-training-orchestration.md](./guides/chatbot-training-orchestration.md)**.
+4. Read [`product/vision.md`](./product/vision.md) and [`product/principles.md`](./product/principles.md).
+5. Review active specs under [`specs/`](./specs/).
+6. Follow [`plans/MVP.md`](./plans/MVP.md) for the first milestone.
 
 ## Operator dashboard
 
