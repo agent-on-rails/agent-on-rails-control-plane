@@ -60,8 +60,9 @@ Optional drafting paths:
 
 - Fast path (AOR-010): `aor gather` turns natural-language requirements into a
   SurveyDesk-shaped `specs/` pack after human confirm.
-- Discovery Team (AOR-011 / ADR-009): staged PO ↔ PM → Architect → Implementation
-  Planner (`aor grill`) with human gates between PRD, architecture, and pack write.
+- Discovery Team (AOR-011 / ADR-009): staged PO ↔ PM (Architect observes) → PRD APPROVED →
+  Architect authors → Planner drafts (`aor grill`) with backward change requests, draft-write
+  autonomy, persist/resume; continuous planner authority in delivery is AOR-003.
 
 Drafts still require APPROVED before agents implement.
 

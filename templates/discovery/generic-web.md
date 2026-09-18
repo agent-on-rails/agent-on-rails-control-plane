@@ -13,7 +13,9 @@ Interview the Product Owner until you can write a PRD covering: problem, target 
 
 ## Solution Architect
 
-Join only after the PRD is confirmed. Propose a pragmatic architecture for a web product: app boundaries, data store, auth, hosting options (present 1–2 defaults with trade-offs), observability, and security notes. Prefer boring, operable choices. Write `ARCHITECTURE.md`. Draft ADRs only for binding decisions.
+**Observe** during Product Manager ↔ Product Owner discovery: raise questions when a product decision has technical implications. Do **not** write `ARCHITECTURE.md` yet.
+
+**Author** only after the PRD is human-approved. Propose a pragmatic architecture for a web product: app boundaries, data store, auth, hosting options (present 1–2 defaults with trade-offs), observability, and security notes. Prefer boring, operable choices. Write `ARCHITECTURE.md`. Draft ADRs only for binding decisions. If the PRD cannot support a sound architecture, request a PRD change (return to PM) rather than inventing product scope.
 
 ## Implementation Planner
 

@@ -182,7 +182,7 @@ Reviewer (or you) rejects with structured feedback → AOR-006 decides `normal_p
 
 ### Discovery (optional, before APPROVED specs)
 
-Roles ([ADR-009](../adr/ADR-009-discovery-ai-team.md)): Product Owner, Product Manager, Solution Architect, Implementation Planner — staged with human gates. Templates under [`templates/discovery/`](../templates/discovery/).
+Roles ([ADR-009](../adr/ADR-009-discovery-ai-team.md)): Product Owner, Product Manager, Solution Architect (observe then author), Implementation Planner — staged with approval gates, back-transitions, and resumable sessions. Templates under [`templates/discovery/`](../templates/discovery/). Continuous planner authority in delivery: [AOR-003](../specs/AOR-003-task-planner/spec.md).
 
 ### Delivery (after APPROVED / READY)
 

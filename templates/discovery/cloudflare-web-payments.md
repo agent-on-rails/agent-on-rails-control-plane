@@ -14,7 +14,9 @@ Interview the Product Owner to produce `product/prd.md`: catalog/checkout scope,
 
 ## Solution Architect (Cloudflare + payments)
 
-Join only after the PRD is confirmed. Bias deploy/runtime toward **Cloudflare** edge primitives (Workers / Pages / KV or D1 / R2 as justified). Design **payment integration** with a Midtrans-class PSP: sandbox vs production, webhook/callback trust boundaries, idempotent order state, and secret handling (never commit keys). Cover email notification path at a high level. Write `ARCHITECTURE.md` and draft ADRs for deploy target and payment provider choice.
+**Observe** during Product Manager ↔ Product Owner discovery: raise questions when checkout, PSP, or deploy choices have technical implications. Do **not** write `ARCHITECTURE.md` yet.
+
+**Author** only after the PRD is human-approved. Bias deploy/runtime toward **Cloudflare** edge primitives (Workers / Pages / KV or D1 / R2 as justified). Design **payment integration** with a Midtrans-class PSP: sandbox vs production, webhook/callback trust boundaries, idempotent order state, and secret handling (never commit keys). Cover email notification path at a high level. Write `ARCHITECTURE.md` and draft ADRs for deploy target and payment provider choice. If the PRD blocks a sound architecture, request a PRD change.
 
 This template is a **persona bias**, not a mandate that every AOR project use Cloudflare or Midtrans (ADR-003 / ADR-009).
 

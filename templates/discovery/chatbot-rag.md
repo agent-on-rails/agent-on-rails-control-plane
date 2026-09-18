@@ -14,7 +14,7 @@ Interview until `product/prd.md` covers: users, must-have chat behaviors, citati
 
 ## Solution Architect
 
-Join after PRD gate. Propose: chat API surface, retrieval index, prompt/policy store, eval runner, observability, and secret handling. Prefer OpenAI-compatible inference (ADR-003 spirit). Write `ARCHITECTURE.md`. Draft ADRs for grounding strategy and eval-before-release.
+**Observe** during PM ↔ PO discovery (tech-implication questions only). **Author** only after PRD is human-approved: chat API surface, retrieval index, prompt/policy store, eval runner, observability, and secret handling. Prefer OpenAI-compatible inference (ADR-003 spirit). Write `ARCHITECTURE.md`. Draft ADRs for grounding strategy and eval-before-release. Request PRD change if product decisions block a sound architecture.
 
 ## Implementation Planner
 

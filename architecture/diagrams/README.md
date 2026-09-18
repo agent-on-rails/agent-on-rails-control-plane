@@ -57,7 +57,7 @@ flowchart TD
   TG --> AG[Delivery AI Team]
 ```
 
-Discovery stages (AOR-011): PO ↔ PM → Architect → Implementation Planner, with human gates between artifacts.
+Discovery stages (AOR-011): PO ↔ PM with Architect observe → PRD APPROVED → Architect authors → Planner drafts; backward change requests; humans gate APPROVED (agents may write DRAFT); sessions resume.
 
 ## Model escalation
 

@@ -12,6 +12,6 @@
 | AOR-008 | Desktop Setup Wizard | draft | [AOR-008-desktop-setup](./AOR-008-desktop-setup/spec.md) |
 | AOR-009 | Unattended AI Team Runtime | draft | [AOR-009-unattended-ai-team-runtime](./AOR-009-unattended-ai-team-runtime/spec.md) |
 | AOR-010 | Natural language spec gathering | approved | [AOR-010-natural-spec-gathering](./AOR-010-natural-spec-gathering/spec.md) |
-| AOR-011 | Discovery AI Team (PRD → architecture → control plane) | review | [AOR-011-discovery-ai-team](./AOR-011-discovery-ai-team/spec.md) |
+| AOR-011 | Discovery AI Team (PRD → architecture → control plane) | approved | [AOR-011-discovery-ai-team](./AOR-011-discovery-ai-team/spec.md) |
 
 All specs start as `draft` until human review moves them through the [lifecycle](../architecture/task-state-machine.md).

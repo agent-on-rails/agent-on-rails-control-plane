@@ -2,13 +2,17 @@
 
 - [ ] `aor grill` (or documented alias) accepts a product brief from arg, `--file`, or stdin
 - [ ] Operator can select architect / PO persona templates (at least: `generic-web`, `cloudflare-web-payments`)
-- [ ] Stage order is enforced: PRD → architecture → control-plane drafts; later stages cannot start before prior human gates
-- [ ] Human confirm/edit is required at PRD gate, architecture gate, and before writing the pack to disk
+- [ ] During `STAGE_PRD`, Architect may observe and raise technical questions but MUST NOT write `ARCHITECTURE.md` until PRD is human-`APPROVED`
+- [ ] Stage order is enforced for authorship: PRD APPROVED → architecture authoring → architecture APPROVED → control-plane drafts
+- [ ] Backward transitions work: `REQUEST_PRD_CHANGE` returns to PRD stage; `REQUEST_ARCHITECTURE_CHANGE` returns to architecture stage; re-approval required
+- [ ] Agents MAY write DRAFT artifacts to disk without a human “confirm write” prompt
+- [ ] Human gates are `DRAFT → APPROVED` for PRD, architecture, and governing specs — not auto-approved
 - [ ] Written drafts include `product/prd.md`, architecture artifact, and a SurveyDesk-shaped or AOR specs tree — **no** application code
-- [ ] Outputs remain `draft` / not auto-`APPROVED`; READY coding path unchanged
+- [ ] Grill session state persists; `aor grill --resume` continues from the last durable checkpoint after interrupt
 - [ ] Stub/offline mode works without network for unit tests
 - [ ] LLM client is OpenAI-compatible via env / config (ADR-003), shared posture with AOR-010
-- [ ] Each closed stage produces a role report with artifact paths
-- [ ] Cost/turn bounds stop runaway discovery sessions and notify the human
-- [ ] Unit tests cover stage machine, gates, and writer integration; integration test covers stub end-to-end grill
+- [ ] Each closed stage or change request produces a role report with artifact paths
+- [ ] Cost/turn bounds stop runaway discovery or unbounded change-request loops and notify the human
+- [ ] Unit tests cover stage machine (forward + backward), approval gates, persist/resume, and writer integration; integration test covers stub end-to-end grill
 - [ ] `aor gather` remains available as the fast path and shares pack-writer layout with grill where applicable
+- [ ] Spec documents that continuous Implementation Planner authority during delivery is owned by AOR-003
