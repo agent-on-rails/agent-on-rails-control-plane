@@ -133,6 +133,8 @@ Both MUST leave artifacts as **draft / not auto-APPROVED**. Gather MAY retain an
 
 AOR-011 ends when the control-plane pack exists as drafts (and humans approve governing specs). The Implementation Planner role **continues in delivery** as planning authority: verify merged slices, check dependencies, authorize only the next eligible slice. That lifecycle is specified in [AOR-003](../AOR-003-task-planner/spec.md), not duplicated here.
 
+**Governance note:** AOR-011 is `approved` for Discovery / `aor grill`. AOR-003 remains `draft` until its own human review — continuous delivery-planner behavior is **not** locked by this approval.
+
 ## Out of scope
 
 - Auto-approving PRD, architecture, or specs

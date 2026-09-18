@@ -60,7 +60,7 @@ Primary operator UX for MVP (ADR-007). Repo: [`agent-on-rails-cli`](https://gith
 - [x] Repo bootstrap: `aor init` creates/validates control-plane (docs+specs); optional `--create-github` via `gh` (AOR-001)
 - [x] Engine client stubs (`AOR_ENGINE_URL`); `aor status` / `run` / `watch`
 - [x] Configure AI Team: `aor team` (implementor / reviewer + default & escalate models)
-- [ ] Discovery grill: `aor grill` staged PO/PM → Architect → Planner (AOR-011 / ADR-009; after gather writer is stable)
+- [ ] Discovery grill: `aor grill` staged PO/PM → Architect → Planner (AOR-011 **approved**; CLI implementation in progress — continuous delivery planner still governed by AOR-003 **draft**)
 - [ ] Wire live engine APIs + GitHub issue sync
 - [x] Human final-review handoff: `aor review` (stub until engine persists)
 - [ ] Surface watchdog / `HUMAN_REQUIRED` / escalated clearly in TUI + `aor watch`
